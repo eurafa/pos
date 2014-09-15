@@ -1,0 +1,192 @@
+\section{Introdução}
+
+Este artigo tem como objetivo apresentar um estudo de caso sobre um sistema de informação de estatística, demonstrando conceitos e a forma de trabalhar com cubo de dados OLAP (presente em sistemas de business intelligence), a montagem de \emph{dashboards} no lado cliente (\emph{front-end}), e o desenvolvimento usando uma arquitetura MVC \emph{client-side}. A escolha do tema justifica-se pela importância da análise e estatísticas de dados para tomada de decisão e competitividade no mercado e a relevância da arquitetura MVC \emph{client-side} na atualidade. 
+
+Estrutura?
+Métodos ágeis?
+
+Antes de apresentar o sistema de informação elaborado, é importante relembrar alguns conceitos que serão relacionados no decorrer do artigo.
+
+\subsection{OLAP}
+
+OLAP (On-Line Analytical Processing)
+
+\subsubsection{Dimensões}
+
+D
+
+\subsubsection{Medidas}
+
+M
+
+\subsection{HyperCube}\label{sec:hypercube}
+
+HyperCube é uma biblioteca escrita em Javascript que proporciona a criação de cubo de dados multidimensional e possibilita aplicar filtros e realizar agregações extraindo dados estatíscos para fins de análise.
+\emph{Open source} sob licença Apache 2.0, o HyperCube está publicado no GitHub, onde está descrito como um banco de dados OLAP leve escrito em Javascript, útil para qualquer aplicação que precise extrair métricas para propósitos de gráficos dinâmicos.
+A estrutura de dados interpretada pelo HyperCube é um mapa no formato JSON (JavaScript Object Notation), onde seus registros contém tempo, fatos e medidas.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{fig1.jpg}
+\caption{IMAGEM do MAPA JSON}
+\label{fig:exampleFig1}
+\end{figure}
+
+Esta estrutura de dados é convertida em um cubo de dados pesquisável, ou seja, apto a ser filtrado e consumido por funções matemáticas.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.3\textwidth]{fig2.jpg}
+\caption{IMAGEM do RESULTADO NO CONSOLE JAVASCRIPT in Section~\ref{sec:hypercube}.}
+\label{fig:exampleFig2}
+\end{figure}
+
+\subsection{Arquitetura MVC client-side}
+
+A arquitetura MVC client-side se diferencia do modelo tradicional devido ao local onde são executados os componentes View e Controller oriundos da sigla MVC [SIGLA], que no caso são executados no lado cliente (client-side), mais especificamente no navegador (browser).
+
+Essa abordagem também é conhecida como "single-page applications!. Significa que, como o próprio nome diz, a aplicação é apresentada em uma página única e o seu conteúdo é carregado dinamicamente. Entre as vantagens que esta abordagem traz estão:
+Vantagens
+
+Melhor experiência para o usuário, a medida que a aplicação web funciona similar a uma aplicação desktop, além de proporcionar melhor performance por evitar a carga completa de páginas a cada interação.
+
+Melhor desempenho na transferência de dados
+
+Existe também um ganho considerável em velocidade na transmissão dos dados, pois ao invés de trafegar o conteúdo html completo a cada interação do usuário, na arquitetura client-side o aplicativo completo é transferido na primeira requisição e as requisições seguintes são responsáveis por trafegar apenas os dados brutos entre o cliente e o servidor, normalmente no formato JSON. Este ganho é visível em aplicações móveis onde a velocidade na transferência dos dados normalmente é baixa.
+Redução de carga no lado servidor
+
+O aplicativo completo passa a ser fornecido através de arquivos html, css e javascript que podem ser comprimidos e distribuídos através de CDN's com facilidade. Após baixados pela primeira vez esses arquivos são mantidos em cache no browser do usuário. O servidor fica responsável apenas por fornecer uma API e enviar e receber os dados brutos no formato JSON. Dessa forma todo o processamento responsável por parsing dos dados e geração de templates fica no lado cliente e não mais no servidor, liberando recursos.
+
+Facilidade de manutenção
+
+Como aplicações client-side dependem apenas da API fornecida pelo servidor, as manutenções no lado servidor podem ser feitas de forma independente e transparente para o lado cliente (desde que não mude a API, obviamente). Da mesma forma, o lado cliente pode ser alterado sem a necessidade de alterar nada no lado servidor.
+
+Gerenciamento de equipes
+
+Como o lado cliente e o lado servidor passam a ser desenvolvidos de forma completamente independente, a única coisa necessária para os dois times trabalharem em paralelo é a definição da estrutura da API. Com esta definição pronta ambos os times podem trabalhar em paralelo onde o time front-ent desenvolve toda a parte client-side utilizando uma API com dados fictícios enquanto o time de back-end desenvolve a parte servidora se preocupando apenas em respeitar a especificação da API acordada entre as equipes.
+
+Facilidade de inclusão de novos front-ends
+
+Como o lado servidor fornece apenas a API, torna-se muito mais fácil desenvolver novos front-ends para dispositivos específicos como uma aplicação nativa para iOS ou Android, por exemplo.
+
+Os frameworks MVC client-side substituem totalmente os frameworks MVC server-side?
+
+Não. Os frameworks server-side passam a fornecer apenas uma API, normalmente no formato REST, para ser consumida pela aplicação MVC no lado cliente. Toda a parte de controle de rotas, renderização de templates e validação ficam no lado cliente. A parte servidora fica responsável pelas validações (novamente? sim, as validações devem ocorrer tanto no lado cliente quanto no lado servidor) e por armazenar e recuperar os dados em um banco de dados.
+Frameworks
+
+Existem diversos frameworks MVC client-side mas alguns que vem ganhando mais destaque ultimamente são:
+
+    Backbone.js
+    Ember.js
+    Angular.js
+
+Alguns outros frameworks que possuem a parte MVC e mais alguns componentes gráficos.
+
+    Sencha Touch
+    ExtJS
+
+Quais as desvantagens de utilizar MVC client-side?
+
+A principal dificuldade é a necessidade de aprender mais um (ou as vezes mais do que um) framework específico para trabalhar exclusivamente com o front-end. A inclusão dessa parte da aplicação, apesar de facilitar a manutenção como comentado anteriormente, adiciona uma nova camada na aplicação, que precisa ser compreendida e respeitada pelo time.
+Outro fator importante a ser considerado é o fato de que aplicações client-side necessitam da execução do código javascript para gerarem o conteúdo html e exibi-lo ao usuário. Apesar de praticamente não existirem usuários com javascript desativado em seus navegadores, os mecanismos de busca ainda tem dificuldade em indexar páginas com conteúdo gerado dinamicamente no lado cliente. Se o seu projeto exige que o conteúdo do seu aplicativo seja indexado por mecanismos de busca, talvez adotar uma arquitetura puramente mvc client-side não sejam a melhor opção.
+
+\section{Mozaic}
+
+O sistema de informação desenvolvido chama-se Mozaic. É uma aplicação web moderna, criada no conceito de página única (\emph{single-page}), usando o \emph{framework} AngularJS. Sua principal característica é possibilitar a análise de dados aplicando filtros e realizando segmentações sobre cubos de dados multi-dimensionais diretamente no lado cliente (\emph{front-end}) através da API[SIGLA] Javascript chamada HyperCube[REF]. Executando funções desta API, o Mozaic extrai informações de medidas do cubo de dados para apresentar ao usuário através de gráficos e \emph{dashboards}. 
+
+\subsection{Arquitetura}
+
+O Mozaic foi desenvolvido na arquitetura MVC client-side, usando o framework AngularJS da Google no front-end da aplicação (View e Controller). A aplicação consume uma API de serviços REST [SIGLA] escritos na linguagem Java. A imagem X [IMAGEM] apresenta a arquitetura do Mozaic e a forma de integração com a API de serviços.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{fig1.jpg}
+\caption{DESENHO DA ARQUITETURA DO SISTEMA}
+\label{fig:exampleFig1}
+\end{figure}
+
+\subsubsection{API de serviços REST}
+
+Para o desenvolvimento do sistema de informação Mozaic, uma simples API de serviços REST foi implementada para que o Mozaic consuma os dados iniciais e monte os dashboards e filtros no front-end.
+A API fornece o serviço carregarDados, suportando o método HTTP [SIGLA] “GET” sem esperar parâmetros. Este serviço, escrito em Java e publicado com o framework Spark, é responsável por carregar todos os dados dos copas do mundo da FIFA[SIGLA] e retornar os mesmos como um objeto JSON como pode ser visto na figura X [FIGURA]. Inicialmente os dados foram colocados em um arquivo físico, pois o foco deste artigo é a manipulação dos dados diretamente no front-end sobre cubo de dados gerado pelo HyperCube. Os dados também poderiam ser obtidos através de um DW [SIGLA] em banco de dados relacional ou, melhor ainda, banco de dados não-relacional  (NoSQL), porém conexão e consulta a banco de dados fogem um pouco do escopo do artigo.
+
+\subsubsection{Spark}
+
+, que fornece uma API [SIGLA] leve para disponibilizar serviços REST [SIGLA] com mínimo esforço.
+.
+http://www.sparkjava.com/
+
+\subsection{Dados}
+
+Para servir de exemplo da implementação do sistema, foi escolhida uma base de dados de histórico de copas do mundo, fornecida pelo site da FIFA [SIGLA] [REF]. Esta base de dados é usada para a montagem do objeto de dados mapeado no formato JSON [SIGLA] como mostra a figura X [FIGURA], que é a estrutura conhecida para que o HyperCube faça a geração do cubo de dados multi-dimensional para aplicar suas funções estatísticas.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{fig1.jpg}
+\caption{IMAGEM DO JSONEDITOR ONLINE]}
+\label{fig:exampleFig1}
+\end{figure}
+
+\subsubsection{Funções da API do HyperCube}
+
+O HyperCube fornece algumas funções para trabalhar com o cubo de dados e obter as informações para análise. As mais relevantes são:
+
+\begin{description}
+\item[count] Retorna o tamanho do cubo de dados, ou seja, a quantidade de objetos.
+\item[getFactNames] Retorna uma lista com os fatos contidos no cubo de dados.
+\item[getValues] Retorna uma lista com os valores distintos contidos em um determinado fato
+\item[slice] Retorna um cubo de dados filtrado a partir de fatos
+\item[sliceDates] Retorna um cubo de dados filtrado com dados entre duas datas
+\item[dice] Retorna um cubo de dados resultante da exclusão de objetos a partir de fatos
+\item[merge] Retorna a mescla um cubo de dados com outro cubo de dados
+\item[sum] Retorna a soma das medidas no cubo
+\item[avg] Retorna a média das medidas no cubo
+\item[topSum] Retorna as maiores somas das medidas no cubo
+\item[serialize] Transforma o cubo de dados no formato JSON
+\item[deserialize] Cria o cubo de dados a partir de um objeto no formato JSON
+\end{description}
+
+Fato
+
+Medida
+
+HyperCube
+
+https://github.com/thesmart/js-hypercube
+
+Para usar o HyperCube, criamos o cubo de dados através de um objeto javacript no formato JSON[SIGLA], com uma estrutura predefinida contendo o momento do dado, fatos e medidas como é demonstrado na imagem abaixo:
+[IMG]
+O HyperCube deserializa o objeto e monta o cubo de dados para ser utilizado, ou seja, disponível para ser filtrado e calcular dados através de funções de agregação
+
+\subsection{Interface}
+
+\subsubsection{AngularJS}
+
+.
+MVC client-site. Dentro deste conceito, está o framework AngularJS, da empresa Google.
+.
+Falar sobre REST
+Falar sobre MVVM
+
+Configurar, CDN (Content Delivery Network)
+
+.
+https://angularjs.org/
+
+
+\section{Considerações Finais}
+
+Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas. Umas 10 linhas.
+
+\section{References}
+
+Oliveira, Eric (2013). Aprenda AngularJS com estes 5 exemplos práticos. Javascript Brasil.
+http://javascriptbrasil.com/2013/10/23/aprenda-angularjs-com-estes-5-exemplos-praticos/
+
+Bibliographic references must be unambiguous and uniform.  We recommend giving
+the author names references in brackets, e.g. \cite{knuth:84},
+\cite{boulic:91}, and \cite{smith:99}.
+
+The references must be listed using 12 point font size, with 6 points of space
+before each reference. The first line of each reference should not be
+indented, while the subsequent should be indented by 0.5 cm.

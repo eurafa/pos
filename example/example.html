@@ -1,0 +1,251 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>	<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>	<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" ng-app="mozaic"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>moZaic</title>
+	<meta name="description" content="">
+	<link rel="stylesheet" href="flexgrid.css" />
+	<link rel="stylesheet" href="mozaic.css" />
+</head>
+<body>
+	<div class="wrapper flexGRID" ng-controller="MozaicController" ng-init="dashboard = 'País';">
+		<div class="row">
+			<div class="col_12 last">
+				<div style="float:right">
+					<a href="" ng-click="dashboard = 'Histórico'">Histórico</a>
+					|
+					<a href="" ng-click="dashboard = 'Ranking'">Ranking</a>
+					|
+					<a href="" ng-click="dashboard = 'País'">País</a>
+					|
+					<a href="" ng-click="dashboard = 'Confronto'">Confronto</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col_12 last">
+				<h1>moZaic | {{dashboard}}</h1>
+			</div>
+		</div>
+		<div class="row" ng-show="dashboard == 'Histórico'" ng-controller="MozaicFilterController">
+			<div class="col_3">
+				<div id="filtros">
+					Filtros
+					<hr/>
+					<fieldset ng-repeat="f in fatos">
+						<legend>{{f}}: <a href="" ng-click="limpar(f);" ng-show="cuboParticipacoesFiltros[f]">[Limpar]</a></legend>
+						<ul>
+							<li ng-repeat="v in fato[f]">
+								<a href=""
+									ng-click="v.selecionado = !v.selecionado; atualizarFiltro(f, v);"
+									ng-class="v.selecionado ? 'selected' : ''">{{v.valor}}</a>
+							</li>
+						</ul>
+					</fieldset>
+				</div>
+			</div>
+			<div id="dashboard" class="col_9 last">
+				Dashboards
+				<hr/>
+				<div class="wrapper flexGRID">
+					<div class="row">
+						<div class="col_3">
+							<mz medida="jogos"></mz>
+						</div>
+						<div class="col_3">
+							<mz medida="vitorias"></mz>
+						</div>
+						<div class="col_3">
+							<mz medida="empates"></mz>
+						</div>
+						<div class="col_3 last">
+							<mz medida="derrotas"></mz>
+						</div>
+					</div>
+				</div>
+				<div class="wrapper flexGRID">
+					<div class="row">
+						<div class="col_6">
+							<mz medida="gols_a_favor"></mz>
+						</div>
+						<div class="col_6 last">
+							<mz medida="gols_contra"></mz>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="dashboard == 'Ranking'">
+			<div id="dashboard-ranking" class="col_12 last" ng-controller="MozaicRankingController">
+				<div class="wrapper flexGRID">
+					<div class="row">
+						<div class="col_12">
+							<table width="100%" colspacing="2" cellpadding="2">
+								<tr>
+									<th align="left">Seleção<hr/></th>
+									<th align="right">Pontos<hr/></th>
+									<th align="right">Jogos<hr/></th>
+									<th align="right">Vitórias<hr/></th>
+									<th align="right">Empates<hr/></th>
+									<th align="right">Derrotas<hr/></th>
+									<th align="right">Gols a favor<hr/></th>
+									<th align="right">Gols contra<hr/></th>
+								</tr>
+								<tr ng-repeat="r in ranking">
+									<td>
+										{{r.pais}}
+									</td>
+									<td align="right">
+										{{r.pontos}}
+									</td>
+									<td align="right">
+										{{r.jogos}}
+									</td>
+									<td align="right">
+										{{r.vitorias}}
+									</td>
+									<td align="right">
+										{{r.empates}}
+									</td>
+									<td align="right">
+										{{r.derrotas}}
+									</td>
+									<td align="right">
+										{{r.gols_a_favor}}
+									</td>
+									<td align="right">
+										{{r.gols_contra}}
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="dashboard == 'País'" ng-controller="MozaicPaisController">
+			<div class="col_3">
+				<div id="filtro-pais">
+					<select ng-model="paisSelecionado">
+						<option value="">Selecione o País</option>
+						<option ng-repeat="p in paises" value="{{p}}">{{p}}</option>
+					</select>
+				</div>
+			</div>
+			<div id="dashboard-pais" class="col_9 last">
+				<div class="wrapper flexGRID" ng-show="paisSelecionado">
+					<div class="row">
+						<div class="col_4" tit="Participação em copas" ind="gauge" val="d.count()" max="copas.getValues('ano').length">
+							Campeão
+						</div>
+						<div class="col_2" tit="Participação em copas" ind="gauge" val="d.count()" max="copas.getValues('ano').length">
+							Participação em copas: 
+							{{cuboPais.count()}}
+						</div>
+						<div class="col_2">
+							Jogos: {{cuboPais.sum()['jogos']}}
+						</div>
+						<div class="col_2">
+							Vitórias: {{cuboPais.sum()['vitorias']}}
+						</div>
+						<div class="col_2">
+							Empates: {{cuboPais.sum()['empates']}}
+						</div>
+						<div class="col_2 last">
+							Derrotas: {{cuboPais.sum()['derrotas']}}
+						</div>
+					</div>
+				</div>
+				<div class="wrapper flexGRID" ng-show="paisSelecionado">
+					<div class="row">
+						<div class="col_2">
+							Gols a favor: {{cuboPais.sum()['gols_a_favor']}}
+						</div>
+						<div class="col_2">
+							Gols contra: {{cuboPais.sum()['gols_contra']}}
+						</div>
+						<div class="col_8 last">
+							Gráfico vitórias em cada copa
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-show="dashboard == 'Confronto'">
+			<div class="col_3">
+				<div id="filtro-confronto-1"></div>
+			</div>
+			<div id="dashboard-pais" class="col_6">
+				<div class="wrapper flexGRID">
+					<div class="row">
+						<div class="col_4">
+							V
+						</div>
+						<div class="col_4">
+							x
+						</div>
+						<div class="col_4">
+							V
+						</div>
+					</div>
+					<div class="row">
+						<div class="col_4">
+							E
+						</div>
+						<div class="col_4">
+							x
+						</div>
+						<div class="col_4">
+							E
+						</div>
+					</div>
+					<div class="row">
+						<div class="col_4">
+							D
+						</div>
+						<div class="col_4">
+							x
+						</div>
+						<div class="col_4">
+							D
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col_3 last">
+				<div id="filtro-confronto-2"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col_12">
+				footer
+			</div>
+		</div>
+	</div>
+		
+	<!-- Requires jQuery, but you could easily replace jQuery if you create $.each, $.map, $.extend, $.isArray, $.isPlainObject, $.isFunction -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="plugins.js"></script>
+
+	<script src="raphael.2.1.0.min.js"></script>
+	<script src="justgage.1.0.1.min.js"></script>
+
+	<script src="../src/ps.js"></script>
+	<script src="../src/ps.array.js"></script>
+	<script src="../src/ps.object.js"></script>
+	<script src="../src/ps.FactIndex.js"></script>
+	<script src="../src/ps.Cell.js"></script>
+	<script src="../src/ps.Cube.js"></script>
+	<script src="../src/ps.Cube.transforms.js"></script>
+	<!-- Typically, you would use the minified version
+	<script src="../js-hypercube.min.js"></script>
+	-->
+
+	<script src="example.data.js"></script>
+	<script src="mozaic.js"></script>
+</body>
+</html>

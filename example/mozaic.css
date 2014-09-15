@@ -1,0 +1,41 @@
+a {
+	color: #eee;
+}
+
+a:hover {
+	color: #fff;
+}
+
+fieldset {
+	margin: 0 0 10px;
+}
+
+legend {
+	margin: 0 0 10px;
+}
+
+#filtros div {
+	word-wrap: break-word;
+}
+
+#filtros a {
+	color: #34495e;
+	padding: 2px 8px;
+}
+
+#filtros a:hover {
+	background-color: #eee;
+}
+
+#filtros .selected {
+	background-color: #ffcc00;
+}
+
+#filtros ul {
+	list-style-image: none;
+}
+
+#filtros ul li {
+	float: left;
+	line-height: 20px;
+}

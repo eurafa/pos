@@ -1,0 +1,28 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: artigo-rafael-oliveira.aux
+The style file: sbc.bst
+Database file #1: artigo-rafael-oliveira.bib
+I was expecting a `,' or a `}'---line 8 of file artigo-rafael-oliveira.bib
+ : 
+ : url={http://javascriptbrasil.com/2013/10/23/aprenda-angularjs-com-estes-5-exemplos-praticos/}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 18 of file artigo-rafael-oliveira.bib
+ : 
+ : url={http://wehavescience.com/2014/07/06/construindo-aplicacoes-rest-utilizando-spark-2-0/}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 28 of file artigo-rafael-oliveira.bib
+ : 
+ : url={https://medium.com/@tschundeee/express-vs-flask-vs-go-acc0879c2122}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+"}" immediately follows an entry type---line 28 of file artigo-rafael-oliveira.bib
+ : url={https://medium.com/@tschundeee/express-vs-flask-vs-go-acc0879c2122
+ :                                                                        }
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 53 of file artigo-rafael-oliveira.bib
+ :   
+ :   ISBN =         {978-1-4493-3181-8}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+(There were 5 error messages)
