@@ -3,13 +3,33 @@
 \usepackage{sbc-template}
 \usepackage{graphicx,url}
 \usepackage{comment}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{soul}
 \usepackage[brazil]{babel}   
 \usepackage[latin1]{inputenc}  
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.9,0.9,0.9}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{mygray},   % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
      
 \sloppy
 
-\title{Implementando um sistema de informação de análise de dados focado no front-end usando SPA e MVC client-side}
-% Estudo de caso de um sistema de informação de estatística usando arquitetura\\MVC client-side
+\title{Implementando um sistema de informação para análise de dados usando SPA e MVC client-side}
+%\title{Implementando um sistema de informação de análise de dados focado no front-end usando SPA e MVC client-side}
+%\title{ Estudo de caso de um sistema de informação de estatística usando arquitetura\\MVC client-side}
+
 
 \author{
 	Rafael Andrade de Oliveira\inst{1},
@@ -31,12 +51,21 @@
 
 \begin{abstract}
 
+	\hl{Pendente...}
+
+	\begin{comment}
 	[This paper describes a case study on the implementation of an statistical information system using the single-page application concept. The objective of this study is to provide a different system architecture to realize data analysis and sought to join relevant subjects present in the field of Information Technology as data analysis, BI, client-side MVC and REST services. For this study were chosen few tools and frameworks in order to enable the idea of the proposed information system, its features and advantages that are detailed throughout this article.]
+	\end{comment}
 
 \end{abstract}
      
 \begin{resumo} 
 
+	O presente trabalho relata um estudo de caso referente a implementação de um sistema de informação para análise de dados, tendo como objetivo demonstrar a realização de análises sobre cubos de dados multi-dimensionais no lado cliente.
+	O estudo de caso abrange também uma avaliação da arquitetura proposta para o desenvolvimento deste sistema de informação que, focado no front-end, envolve o conceito SPA (Single-Page Application) e o modelo MVC (Model-View-Controller) client-sidea, além de serviços REST (REpresentational State Transfer).
+	No escopo do artigo consta o detalhamento das características e diferenciais deste sistema de informação e sua arquitetura, bem como a forma de manipulação sobre cubo de dados.
+	
+	\begin{comment}
 	O presente trabalho relata a implementação de um sistema de informação de análise de dados com foco no front-end, tendo como objetivo apresentar uma proposta de arquitetura para realizar análises de dados no lado cliente, usando o conceito SPA (Single-Page Application) aliado ao modelo MVC (Model-View-Controller) client-side.
 	Para viabilizar a ideia do sistema de informação proposto foram escolhidas algumas ferramentas e frameworks existentes.
 	%No escopo do artigo consta o detalhamento das características e diferenciais do sistema de informação e as ferramentas utilizadas na composição da arquitetura proposta.
@@ -44,48 +73,61 @@
 	
 	% Para a realização desta proposta de arquitetura, foram escolhidas algumas ferramentas e frameworks existentes de forma a viabilizar a ideia do sistema de informação proposto, suas características e diferenciais que serão detalhadas ao longo deste artigo.
 	% Para a realização desta proposta de arquitetura, procurou-se unir assuntos presentes na área de Tecnologia da Informação como análise de dados, BI, MVC client-side. 
+	\end{comment}
 
 \end{resumo}
 
 \section{Introdução}
 
-	Este artigo irá apresentar um sistema de informação de análise de dados com foco no \emph{front-end}, trazendo consigo uma proposta de arquitetura de \emph{software} moderna voltada para a \emph{web}.
-	O objetivo desta implementação é possibilitar a realização de análises de dados diretamente no lado cliente sem a necessidade de requisições HTTP (HyperText Transfer Protocol) adicionais, trocas de mensagens ou consumo de serviços \emph{web} a cada interação.
+	Este artigo irá apresentar a implementação de um sistema de informação para análise de dados com foco no \emph{front-end}, trazendo consigo uma proposta de arquitetura de \emph{software} moderna voltada para a \emph{web}.
+	O objetivo desta implementação é possibilitar a realização de análises sobre cubo de dados diretamente no lado cliente, evitando requisições HTTP (HyperText Transfer Protocol) adicionais, trocas de mensagens ou consumo de serviços \emph{web} a cada interação do usuário ao aplicar filtros e segmentações.
 	
-	A escolha do tema justifica-se pela importância da análise de dados para tomada de decisão e competitividade no mercado e a relevância de arquitetura de \emph{software} modernas acompanhando a evolução da Internet e das linguagens de programação.
-	Em relação a análise de dados, percebemos que atualmente muitas empresas estão investindo em soluções de BI (Business Intelligence) e BigData, entendendo que a análise do seu próprio negócio e o levantamento de indicadores é importante para alavancar resultados.
-	Sobre a arquitetura de \emph{software}, sabe-se da necessidade de evolução constante para acompanhar as inovações tecnológicas, além de mudanças comportamentais e culturais da sociedade. O surgimento de novos dispositivos móveis como tablets e a modernização de celulares (\emph{smartphones}) exigem avanços nos aplicativos fazendo com que a arquitetura de \emph{software} se envolvesse por exemplo com mobilidade, computação na nuvem (\emph{cloud computing}) e design responsivo. Por outro lado, o volume de pessoas com acesso a Internet e a milhares de aplicativos também estimula a competitividade, trazendo a preocupação com UX (\emph{User eXperience}) sem esquecer de pontos óbvios como desempenho e escalabilidade.
+	A escolha do tema justifica-se pela importância da análise de dados para tomada de decisão aliada a competitividade no mercado corporativo e também a relevância do uso de uma arquitetura de \emph{software} moderna, que acompanhe a evolução da Internet e linguagens de programação.
+
+	Em relação a análise de dados, percebemos que atualmente muitas empresas estão investindo em soluções de apoio de decisão como BI (Business Intelligence) e BigData, entendendo que a análise do seu próprio negócio e o levantamento de indicadores é importante para alcançar melhores resultados.
+	Sobre a arquitetura de \emph{software}, sabe-se da necessidade de evolução constante para acompanhar as inovações tecnológicas, além de mudanças comportamentais e culturais da sociedade.
+	O surgimento de novos dispositivos móveis como tablets e a modernização de celulares (\emph{smartphones}) exigem avanços nos aplicativos fazendo com que a arquitetura de \emph{software} se envolvesse por exemplo com mobilidade, computação na nuvem (\emph{cloud computing}) e design responsivo.
+	Além disso, o volume de pessoas com acesso a Internet e a milhares de aplicativos estimula a competitividade, fazendo com que a arquitetura tenha também a preocupação com UX (User eXperience), sem esquecer necessidades óbvias como desempenho e escalabilidade.
 	
-	Para servir de modelo da implementação de um sistema de informação de análise de dados sobre uma arquitetura de \emph{software} com o foco no lado cliente, foi desenvolvido o sistema \textbf{Mozaic}.
+	Para servir de modelo da implementação de um sistema de informação para análise de dados sobre uma arquitetura de \emph{software} com o foco no lado cliente, foi desenvolvido o sistema \textbf{Mozaic}.
 	Antes de apresentar a arquitetura proposta e a implementação do Mozaic, descritas na seção \ref{mozaic}, é interessante alinhar alguns pontos facilitando o melhor entendimento do sistema e da arquitetura proposta.
-	As próximas seções abordam conceitos, tecnologias e \emph{frameworks} utilizados na a prova de conceito da arquitetura através do sistema de informação Mozaic.
+	As próximas seções abordam conceitos, tecnologias e \emph{frameworks} utilizados na prova de conceito da arquitetura através do sistema de informação Mozaic.
 
 \section{Conceitos e tecnologias}
 
 	Nesta seção serão descritos conceitos e tecnologias que foram utilizadas na arquitetura proposta e no desenvolvimento do sistema de informação Mozaic.
 	Com isso, será mais fácil compreender a proposta deste artigo e a relação dos conceitos com a arquitetura proposta e as o motivo das tecnologias estarem envolvidas no Mozaic.
 
-	\subsection{MVC}\label{mvc}
+	\subsection{OLAP}
 	
-		A busca constante pela melhor forma de desenvolvimento de \emph{software} provoca uma série de estudos. 
-		Muitos deles resultaram na criação dos chamados Padrões de Projeto (Design Patterns), que servem de modelos arquiteturais para resolverem problemas comuns de desenvolvimento.
-		Estes padrões focam no reaproveitamento de soluções, seguindo alguns princípios como SoC (Separation Of Concerns), DRY (Don't Repeat Yourself), KISS (Keep It Simple Stupid) que guiam os desenvolvedores e arquitetos de \emph{software} em relação a separação de responsabilidades, não repetir ou querer reinventar a roda e manter códigos simples. 
-		Foram pensados, testados e aprimorados pro programadores experientes, dando a confiança necessária para o seu reuso.
+		\hl{Pendente...}
+		Apresentação
+
+		\hl{Pendente...}
+		Tempo
+
+		\hl{Pendente...}
+		Dimensões
+
+		\hl{Pendente...}
+		Medidas
+
+
+\begin{comment}
+		Quando falamos de análise de dados, um leque de opções e níveis de análise podem aparecer. Em um contexto mais analítico e interativo, o cenário se estreita a análises sobre cubo de dados multi-dimensional.
+		OLAP (On-Line Analytical Processing)
 		
-		A grande evolução no desenvolvimento \emph{web} veio com a recomendação do uso do padrão arquitetural MVC (Model-View-Controller) \cite{intro-arq-des-sw}.
-		Este modelo visa a organização e a padronização da arquitetura de \emph{software}, separando a arquitetura em três camadas como mostra a figura \ref{fig:0}.
+		.
 		
-		\begin{figure}[ht]
-		\centering
-		\includegraphics[width=.5\textwidth]{1.jpg}
-		\caption{Desenho do modelo MVC e a interação entre as camadas}
-		\label{fig:0}
-		\end{figure}
+		Abaixo um breve descritivo dos componentes básicos contidos em cubos de dados multi-dimensionais:
 		
-		No modelo MVC cada um dos componentes tem responsabilidade bem definida.
-		Model é o componente responsável pela representação do modelo de dados e mecanismo de persistência e View é responsável pela apresentação e interação com o usuário final. Já o Controller é o mecanismo intermediário responsável por receber e responder a eventos e ações entre os componentes Model e View.
-		MVC é um padrão de projeto arquitetônico que incentiva a organização de uma melhor aplicação através de uma separação de interesses \cite{lng-js-dp}.
-	
+		\begin{description}
+		\item[Fato] .
+		\item[Dimensões] .
+		\item[Medidas] .
+		\end{description}
+\end{comment}
+
 	\subsection{JavaScript}
 	
 		JavaScript é considerada a linguagem de programação da Internet.
@@ -119,7 +161,7 @@
 		\end{figure}
 	
 		O JSON é um formato de serialização de dados com base em literais de JavaScript \cite{js-guide}.
-		Este formato de dados tem sido bastante utilizado no desenvolvimento de aplicações \emph{web} e serviços REST (REpresentational State Transfer), em substituição ao formato XML (eXtensible Markup Language) que é mais verboso como se pode perceber no comparativo representado na figura \ref{fig:js-xml-comparativo}.
+		Este formato de dados tem sido bastante utilizado no desenvolvimento de aplicações \emph{web} e serviços REST (descrito na seção \ref{rest}), em substituição ao formato XML (eXtensible Markup Language) que é mais verboso como se pode perceber no comparativo representado na figura \ref{fig:js-xml-comparativo}.
 		
 		\begin{figure}[ht]
 		\centering
@@ -128,22 +170,75 @@
 		\label{fig:js-xml-comparativo}
 		\end{figure}
 	
+	\subsection{REST}\label{rest}
+
+		\hl{Pendente...}
+
+\begin{comment}
+\begin{lstlisting}[language=java]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); // Display the string.
+        for (int i = 0; i < 100; ++i) {
+            System.out.println(i);
+        }
+    }
+}
+\end{lstlisting}
+\end{comment}
+
+	\subsection{MVC}\label{mvc}
+	
+		A busca constante pela melhor forma de desenvolvimento de \emph{software} provoca uma série de estudos. 
+		Muitos deles resultaram na criação dos chamados Padrões de Projeto (Design Patterns), que servem de modelos arquiteturais para resolverem problemas comuns de desenvolvimento.
+		Estes padrões focam no reaproveitamento de soluções, seguindo alguns princípios como SoC (Separation Of Concerns), DRY (Don't Repeat Yourself), KISS (Keep It Simple Stupid) que guiam os desenvolvedores e arquitetos de \emph{software} em relação a separação de responsabilidades, não repetir ou querer reinventar a roda e manter códigos simples. 
+		Foram pensados, testados e aprimorados pro programadores experientes, dando a confiança necessária para o seu reuso.
+		
+		A grande evolução no desenvolvimento \emph{web} veio com a recomendação do uso do padrão arquitetural MVC (Model-View-Controller) \cite{intro-arq-des-sw}.
+		Este modelo visa a organização e a padronização da arquitetura de \emph{software}, separando a arquitetura em três camadas como mostra a figura \ref{fig:0}.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Desenho do modelo MVC e a interação entre as camadas}
+		\label{fig:0}
+		\end{figure}
+		
+		No modelo MVC cada um dos componentes tem responsabilidade bem definida.
+		Model é o componente responsável pela representação do modelo de dados e mecanismo de persistência e View é responsável pela apresentação e interação com o usuário final. Já o Controller é o mecanismo intermediário responsável por receber e responder a eventos e ações entre os componentes Model e View.
+		MVC é um padrão de projeto arquitetônico que incentiva a organização de uma melhor aplicação através de uma separação de interesses \cite{lng-js-dp}.
+	
 	\subsection{MVC client-side}
 	
 		MVC client-side nada mais é do que o modelo MVC descrito na seção \ref{mvc} aplicado no lado cliente (\emph{client-side}).
 		Muitos desenvolvedores consideram MVC como o modelo ideal de arquitetura de \emph{software}. Mesmo assim, este modelo de arquitetura vem sofrendo variações.
 		Uma vez que o modelo (Model) e a apresentação (View) são essenciais para os sistemas, estas variações ocorrem no componente intermediário (Controller), dando lugar a novos modelos de arquitetura conhecidos como a família MV* ou MVW (Model-View-Whatever).
+
+		\hl{Pendente...}
+		SPA (Single-Page Application)
+
+		\hl{Pendente...}
+		Vantagens
 	
 		\subsubsection{MVP}
-	
+
+			\hl{Pendente...}
 			MVP (Model-View-Presenter).
+
+\begin{comment}	
 			Mecanismo semelhante ao MVC, o MVP se diferencia apenas no conceito.
+\end{comment}	
 	
 		\subsubsection{MVVM}
 	
+			\hl{Pendente...}
 			MVVM (Model-View-ViewModel)
-	
+
+			\hl{Pendente...}
 			Binding
+
+\begin{comment}	
+			
 			
 			Novas siglas surgem como MVP (Model-View-Presenter), MVVM (Model-View-View-Model) e MV* precisam ser compreendidas.
 			
@@ -181,6 +276,8 @@
 		Este é um cenário comum atualmente, onde existem versões diferentes de uma aplicação para \emph{desktop}, \emph{web} ou \emph{mobile}.
 		Uma desvantagem dessa abordagem poderia ser na questão de validação, que deve ser feita em ambos os lados, garantindo a integridade e qualidade dos sistemas.
 
+\end{comment}	
+
 \begin{comment}
 
 Atualmente este modelo de arquitetura vem sofrendo variações.
@@ -204,31 +301,17 @@ A arquitetura de \emph{sotfware} 1
 
 
 	
-	\subsection{OLAP}
-	
-		Quando falamos de análise de dados, um leque de opções e níveis de análise podem aparecer. Em um contexto mais analítico e interativo, o cenário se estreita a análises sobre cubo de dados multi-dimensional.
-		OLAP (On-Line Analytical Processing)
-		
-		.
-		
-		Abaixo um breve descritivo dos componentes básicos contidos em cubos de dados multi-dimensionais:
-		
-		\begin{description}
-		\item[Fato] .
-		\item[Dimensões] .
-		\item[Medidas] .
-		\end{description}
 
 \section{Frameworks}
 
-	Esta seção aborda os frameworks utilizados no desenvolvimento do sistema Mozaic, descrevendo a importância e características principais, dando uma noção do motivo pelos quais os mesmos foram escolhidos para serem usados na implementação do Mozaic.
+	Esta seção aborda os \emph{frameworks} utilizados no desenvolvimento do sistema Mozaic, descrevendo a importância e características principais, dando uma noção do motivo pelos quais os mesmos foram escolhidos para serem usados na implementação do Mozaic.
 	
 	\subsection{HyperCube}\label{sec:hypercube}
 	
 		HyperCube é uma biblioteca escrita em JavaScript que proporciona a criação de cubos de dados multi-dimensional, permite a aplicação de filtros e agregações, gerando dados estatíscos para fins de análise.
-		\emph{Open source} sob licença Apache 2.0, o HyperCube está publicado no GitHub, onde está descrito como um banco de dados OLAP (On-Line Analytical Processing) leve escrito em JavaScript, útil para qualquer aplicação que precise extrair métricas para propósitos de gráficos dinâmicos.
+		\emph{Open source} sob licença Apache 2.0, o HyperCube está publicado no GitHub, onde está descrito como um banco de dados OLAP leve escrito em JavaScript, útil para qualquer aplicação que precise extrair métricas para propósitos de gráficos dinâmicos.
 		
-		A estrutura de dados interpretada pelo HyperCube é um mapa no formato JSON (JavaScript Object Notation), onde seus registros contém tempo, fatos e medidas como mostra a figura \ref{fig:ex-mapa-json}.
+		A estrutura de dados interpretada pelo HyperCube é um mapa no formato JSON, onde seus registros contém tempo, fatos e medidas como mostra a figura \ref{fig:ex-mapa-json}.
 		Esta estrutura de dados é convertida em um cubo de dados pesquisável, ou seja, apto a ser filtrado e consumido por funções matemáticas. A figura \ref{fig:cmd-js-cubo-hypercube} mostra o trecho de código JavaScript que realiza a geração do cubo de dados.
 		
 		\begin{figure}[ht]
@@ -240,7 +323,7 @@ A arquitetura de \emph{sotfware} 1
 
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.3\textwidth]{2.jpg}
+		\includegraphics[width=.5\textwidth]{1.jpg}
 		\caption{Código JavaScript responsável pela transformação do mapa em um cubo de dados do HyperCube}
 		\label{fig:cmd-js-cubo-hypercube}
 		\end{figure}
@@ -270,15 +353,24 @@ A arquitetura de \emph{sotfware} 1
 		Em seu site, está descrito como 
 		AngularJS é construído sobre a ideologia de que a programação declarativa deve ser usada para construção de interfaces e componentes, enquanto que a programação imperativa é excelente para escrever as regras de negócio \cite{col-front-end}.
 		
-		.
-		Falar sobre MVVM
-		
-		
-		
-		Para isso, utiliza o conceito SPA (Single-Page Application), o padrão de arquitetura MVC (Model-View-Controller) \emph{client-side} e bibliotecas JavaScript específicas para trabalhar com cubo de dados OLAP (On-Line Analytical Processing).
+		\hl{Pendente...} link com MVVM / MVW / MV*
+
+		\hl{Pendente...} Controladores
+
+		\hl{Pendente...} Modelos
+
+		\hl{Pendente...} Escopo
+
+		\hl{Pendente...} Diretivas
+
+		\hl{Pendente...} Filtros
 
 \begin{comment}
-%Diferente da tradicional abordagem de sistemas de BI (Business Intelligence), este artigo irá propor uma solução onde a análise é realizada no lado cliente, apenas com resursos locais de navegador e \emph{hardware}. Normalmente as ferramentas de BI se baseiam em dados %de um DW (Data Warehouse) onde os dados são desnormalizados para melhor performance. Através de uma ferramenta de ETL (Extract, Transform, Load), os dados são extraídos  de um banco de dados operacional com modelo normalizado, passam por um processo de %transformação e por fim são carregados no DW já na forma agregada e sumarizada. Ainda assim, a performance de um BI depende de uma série de fatores, entre eles o tráfego e latência de rede, a conexão com o banco de dados, a execução da consulta, além da %concorrência de requisições entre servidores. 
+
+Para isso, utiliza o conceito SPA (Single-Page Application), o padrão de arquitetura MVC (Model-View-Controller) \emph{client-side} e bibliotecas JavaScript específicas para trabalhar com cubo de dados OLAP (On-Line Analytical Processing).
+
+
+
 \end{comment}
 
 \begin{comment}
@@ -294,55 +386,226 @@ A arquitetura de \emph{sotfware} 1
 % UI / UX
 \end{comment}
 
-\section{Mozaic}\label{mozaic}
+	\subsection{Spark}
 
-	O sistema de informação desenvolvido chama-se Mozaic. Trata-se de uma ferramenta de análise de dados visual que permite aplicar filtros e realizar segmentações sobre cubos de dados multi-dimensionais.
-	É uma aplicação \emph{web} de arquitetura moderna, criada no conceito de página única (\emph{single-page}) usando o \emph{framework} AngularJS.
-	Tem como principal característica a manipulação dos dados diretamente no lado cliente (\emph{front-end}) buscando melhor desempenho fazendo uso de recursos no lado cliente.
-	Entende-se com isso o uso da memória pelo navegador e não tráfego de rede e consultas em banco de dados.
-	
-	O Mozaic foi desenvolvido usando o conceito \emph{single-page application}, usando o \emph{framework} AngularJS da Google no \emph{front-end} da aplicação. 
-	A aplicação consome uma API de serviços RESTescritos na linguagem Java. A figura \ref{fig:arq-mozaic} apresenta a arquitetura do Mozaic e a forma de integração com a API de serviços.
-	
-	\begin{figure}[ht]
-	\centering
-	\includegraphics[width=.5\textwidth]{5.jpg}
-	\caption{DESENHO DA ARQUITETURA DO SISTEMA}
-	\label{fig:arq-mozaic}
-	\end{figure}
-
-	Mais \emph{client-side} e menos \emph{server-side} é a ideia do Mozaic.
-	Onde o lado servidor só é necessário se a origem dos dados for dinâmica por exemplo tabelas de banco de dados que sofrem atualizações constantes.
-	Diferente de aplicações cliente-servidor que trabalham basicamente com troca de mensagens via requisições HTTP e outras tecnologias, como o Node.JS, processam o JavaScript no lado servidor.
-	Basicamente, o Mozaic realiza apenas requisições para a inclusão das bibliotecas JavaScript utilizadas na página.
-	Para importar os dados e trabalhar as análises, busca um objeto JavaScript no formato JSON para a geração do cubo de dados multi-dimensional.
-	Os dados precisam ser carregados no JavaScript da página (\emph{client-side}), portanto devem ser extraídos de uma requisição adicional para um arquivo, caso os dados sejam estáticos, ou extraídos de uma requisição a um serviço REST que retornará os dados no formato JSON esperado.
-	
-	Com os dados no lado cliente, o Mozaic já pode montar o cubo de dados multi-dimensional e manipular os dados. 
-	Para isso, utiliza a da API (Application Programming Interface) JavaScript do HyperCube, que disponibiliza algumas funções permitindo que se extraia informações do cubo de dados, relacionada tanto a fatos quanto medidas.
-	É dessa forma que o Mozaic acessa os dados e consegue criar os possíveis filtros e análises iniciais para apresentar ao usuário de forma visual através de gráficos e \emph{dashboards}, interagindo com o usuário através da seleção de dados dos filtros na página.
-
-%	\subsection{Apresentação}
+		Spark é um micro web \emph{framework} desenvolvido que tem como característica viabilizar a criação de aplicações \emph{web} em Java com o mínimo de esforço possível, sem a necessidade de configurações em XML (eXtensible Markup Language).
 		
-%	\subsection{Arquitetura}
-	
-	\subsection{Cubo de dados}
-	
-		Para servir de exemplo da implementação do sistema, foi escolhida uma base de dados de histórico de copas do mundo de futebol, fornecida pelo site da FIFA (Fédération Internationale de Football Association). Esta base de dados foi mapeada no formato JSON como mostra a figura \ref{fig:dados-fifa-json}, que é a estrutura conhecida para que o HyperCube faça a geração do cubo de dados multi-dimensional para aplicar suas funções estatísticas.
+		Inspirado no \emph{framework} Sinatra, o Spark é muito leve e tem como foco a facilidade do desenvolvimento web puramente Java de forma realmente simples e elegante, o que torna divertido para os desenvolvedores.
+		
+		O Spark é intrigante pelo fato de sua simplicidade \cite{francisco:14}. Está na versão 2.0.0, uma versão que foi desenvolvida incluindo adaptações para a versão 8 da linguagem Java, atualizando o \emph{framework} e usando recursos novos como a funcionalidade \textbf{Lambda}, deixando assim o \emph{framework} ainda mais elegante.
+		
+		Para exemplificar a simplicidade de um serviço REST usando o Spark, o próprio site do Spark apresenta o serviço HelloWorld, respondendo para o mapeamento "/hello" através do método HTTP GET como mostra a figura \ref{fig:3}. Para executar o serviço, ou seja, colocá-lo no ar ou disponibilizá-lo para consumo, basta executar a classe como um programa Java, pois o Spark possui o servidor de aplicação Jetty embutido.
 		
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.5\textwidth]{7.jpg}
-		\caption{IMAGEM DO JSONEDITOR ONLINE]}
-		\label{fig:dados-fifa-json}
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{IMAGEM DO SERVIÇO HELLOWORLD}
+		\label{fig:3}
+		\end{figure}
+		
+		Com o serviço pronto, o acesso já pode ser realizado através de uma requisição HTTP. No exemplo apresentado no site, a URL do serviço é \textbf{http://localhost:4567/hello}, onde o \emph{host} é \textbf{localhost} (servidor local) e a porta é \textbf{4567}, a porta padrão do Spark que pode ser configurada. Realizando a chamada do serviço no navegador, obtemos o resultado apresentado na figura \ref{fig:4}.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{SERVIÇO EXECUTADO NO NAVEGADOR}
+		\label{fig:4}
 		\end{figure}
 	
-	\subsection{Interface}
+		Fora a facilidade do desenvolvimento com Spark, a performance também é um ponto positivo do framework, mesmo rodando sobre a JVM (Java Virtual Machine). Foi colocado a prova e comparado com outras tecnologias e o resultado foi útimo \cite{bijan:14}.
+		Se você quiser saber mais sobre este projeto, acesse o site http://www.sparkjava.com.
 
-		Embora a principal característica do Mozaic esteja na sua ideia de arquitetura e mecanismo de análise, a \emph{interface} da aplicação é também um ponto importantíssimo pois é no \emph{front-end} que são montados os filtros de análise e \emph{dashboards} com dados e gráficos consolidados. Além disso, a forma com que os dados se mantém atualizados é baseada no paradigma MVVM do Angular, mantendo \textbf{Model} e \textbf{View} sincronizados, possibilitando manter dados atualizados em tempo real.
+\section{Mozaic}\label{mozaic}
+
+%	\subsection{Apresentação}
+
+	O sistema de informação implementado para o estudo de caso deste artigo chama-se Mozaic.
+	O Mozaic é uma aplicação \emph{web} no conceito de página única (\emph{single-page}) que serve para auxiliar a análise de dados estatísticos, manipulando dados em tempo real diretamente no \emph{front-end}.
+	Tem como característica possibilitar esta análise sobre cubos de dados multi-dimensionais (OLAP), portanto através de filtros e segmentações o Mozaic apresenta os dados para análise através de \emph{dashboards}.
+
+	A arquitetura do Mozaic é moderna, sendo desenvolvida no modelo MVC \emph{client-side}, mais precisamente o modelo MVVM com o uso do \emph{framework} AngularJS no \emph{front-end} da aplicação.
+	O Mozaic é apoiado por uma API (Application Programming Interface) de serviços REST escritos na linguagem Java, onde para o presente estudo de caso artigo foi criado apenas um serviço chamado \textbf{carregarDados}.
+	Este serviço, publicado com o \emph{micro-framework} Spark, suporta o método HTTP (Hypertext Transfer Protocol) \textbf{GET} sem esperar parâmetros e é responsável por carregar os dados iniciais necessários para a montagem do cubo de dados multi-dimensional.
+	A figura \ref{fig:arq-mozaic} apresenta a arquitetura do Mozaic e a forma de integração com a API de serviços.
+	
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{1.jpg}
+	\caption{Desenho da arquitetura proposta, utilizada pelo Mozaic}
+	\label{fig:arq-mozaic}
+	\end{figure}
+
+%	\subsection{Cubo de dados}
+
+	Uma vez gerado o cubo de dados, o Mozaic consegue executar as funções de estatística do HyperCube. É desta forma que ele extrai os indicadores que são apresentados nos \emph{dashboards} da aplicação, além da montagem dinâmica dos filtros que permitem a interação com o usuário.
+
+	Para servir de exemplo da análise de dados usando sistema Mozaic, foi escolhida uma base de dados de histórico de copas do mundo de futebol, fornecida pelo site da FIFA (Fédération Internationale de Football Association) como mostra a figura \ref{fig:site-fifa}.
+	O Mozaic trabalha com os dados no lado cliente, para isso precisa carregá-los no JavaScript.
+	Inicialmente foi pensado em colocar os dados em um arquivo JavaScript externo e importá-lo na página HTML, porém para enriquecer a arquitetura uma API de serviços REST foi criada, onde o serviço \textbf{carregarDados} foi disponibilizado e através dele os dados são carregados no lado cliente, como um objeto JavaScript to tipo \emph{array}, no formato JSON.
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{1.jpg}
+	\caption{Estatísticas de copas do mundo disponibilizados no site da FIFA}
+	\label{fig:site-fifa}
+	\end{figure}
+	
+	Atualmente se optou por trabalhar com um universo de dados de exemplo fixo (\emph{hard-coded}).
+	Neste cenário, o Mozaic consume o serviço REST, publicado com o Spark, no JavaScript (via AJAX) para carregar os dados estatísticos no lado cliente no formato JSON.
+	As figuras \ref{fig:retorno-rest} e \ref{fig:consumo-rest} mostram respectivamente o retorno do serviço \textbf{carregarDados} diretamente no navegador e o código JavaScript consumindo o serviço.
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{1.jpg}
+	\caption{Retorno do serviço no navegador}
+	\label{fig:retorno-rest}
+	\end{figure}
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{1.jpg}
+	\caption{Consumo do serviço REST no JavaScript via AJAX}
+	\label{fig:consumo-rest}
+	\end{figure}
+
+	Como o escopo do artigo é a manipulação dos dados diretamente no \emph{front-end} sobre o cubo de dados gerado pelo HyperCube, optou-se por utilizar os dados fixos.
+	Mas a carga de dados poderia ser feita de diversas maneiras.
+	Os dados poderiam ser obtidos através de um DBMS (DataBase Management System), em português SGBD (Sistema de Gerenciamento de Banco de Dados), no tradicional banco de dados relacional ou em banco de dados NoSQL (Not Only SQL) que é um banco de dados não-relacional, mais flexível e de alta performance.
+	Em uma abordagem mais profissional, é interessante trabalhar com os dados de um DW (Data Warehouse), onde o modelo de dados é desnormalizado, normalmente os dados já foram transformados, agrupados e agregados por uma ferramenta de ETL (Extract, Transform, Load) deixando-os prontos para serem apresentados.
+
+	%Tem como principal característica a manipulação dos dados diretamente no lado cliente (\emph{front-end}) buscando melhor desempenho fazendo uso de recursos no lado cliente.
+	%Entende-se com isso o uso da memória pelo navegador e não tráfego de rede e consultas em banco de dados.
+
+	%Embora a principal característica do Mozaic esteja na sua ideia de arquitetura e mecanismo de análise, a \emph{interface} da aplicação é também um ponto importantíssimo pois é no \emph{front-end} que são montados os filtros de análise e \emph{dashboards} com dados e gráficos consolidados. Além disso, a forma com que os dados se mantém atualizados é baseada no paradigma MVVM do Angular, mantendo \textbf{Model} e \textbf{View} sincronizados, possibilitando manter dados atualizados em tempo real.
 		
-		O \emph{design} da aplicação, bem como os gráficos, além de apresentar corretamente as informações devem mostrar os dados de forma clara e objetiva para possibilitar uma análise mais rápida e assertiva.
+	%O \emph{design} da aplicação, bem como os gráficos, além de apresentar corretamente as informações devem mostrar os dados de forma clara e objetiva para possibilitar uma análise mais rápida e assertiva.
+	
+	
+
+	%\subsection{Arquitetura}
+
+
+		%Mais \emph{client-side} e menos \emph{server-side} é a ideia do Mozaic.
+		%Onde o lado servidor só é necessário se a origem dos dados for dinâmica por exemplo tabelas de banco de dados que sofrem atualizações constantes.
+
+\begin{comment}
+		Diferente de aplicações cliente-servidor que trabalham basicamente com troca de mensagens via requisições HTTP e outras tecnologias, como o Node.JS, processam o JavaScript no lado servidor.
+		Basicamente, o Mozaic realiza apenas requisições para a inclusão das bibliotecas JavaScript utilizadas na página.
+		Para importar os dados e trabalhar as análises, busca um objeto JavaScript no formato JSON para a geração do cubo de dados multi-dimensional.
+		Os dados precisam ser carregados no JavaScript da página (\emph{client-side}), portanto devem ser extraídos de uma requisição adicional para um arquivo, caso os dados sejam estáticos, ou extraídos de uma requisição a um serviço REST que retornará os dados no 	formato JSON esperado.
+	
+		Com os dados no lado cliente, o Mozaic já pode montar o cubo de dados multi-dimensional e manipular os dados. 
+		Para isso, utiliza a da API (Application Programming Interface) JavaScript do HyperCube, que disponibiliza algumas funções permitindo que se extraia informações do cubo de dados, relacionada tanto a fatos quanto medidas.
+		É dessa forma que o Mozaic acessa os dados e consegue criar os possíveis filtros e análises iniciais para apresentar ao usuário de forma visual através de gráficos e \emph{dashboards}, interagindo com o usuário através da seleção de dados dos filtros na página.
+
+
+%\section{Integração com MVC server-side}
+
+		%O sistema Mozaic prova que é possível desenvolver uma aplicação \emph{web} para análise de dados diretamente no front-end através de um cubo de dados estático mapeado em JavaScript no formato JSON, porém nem sempre os dados disponibilizados para análise serão fixos. é interessante que o cubo de dados não seja estático.
+	
 		
+		Fato
+		
+		Medida
+		
+		HyperCube
+		
+		https://github.com/thesmart/js-hypercube
+		
+		Para usar o HyperCube, criamos o cubo de dados através de um objeto javacript no formato JSON, com uma estrutura predefinida contendo o momento do dado, fatos e medidas como é demonstrado na imagem \ref{fig:fifa-dados-json} abaixo:
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Dados de copas do mundo obtidas junto a FIFA, no formato JSON}
+		\label{fig:fifa-dados-json}
+		\end{figure}
+		
+		O HyperCube deserializa o objeto e monta o cubo de dados para ser utilizado, ou seja, disponível para ser filtrado e calcular dados através de funções de agregação
+\end{comment}
+	
+	\subsection{Dashboards}
+
+		\hl{Pendente...} 
+		Apresentar a interface do Mozaic
+
+	\subsubsection{Histórico}
+
+		\hl{Pendente...} 
+		Descrever interface \ref{fig:mozaic-interface}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Tela de histórico do Mozaic com filtros e dashboards}
+		\label{fig:mozaic-interface}
+		\end{figure}
+
+		\hl{Pendente...} 
+		Filtros
+		
+		\hl{Pendente...}
+		Tela \ref{fig:mozaic-historico}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Tela de histórico do Mozaic apresentando dashboards com os filtros aplicados}
+		\label{fig:mozaic-historico}
+		\end{figure}
+				
+	\subsubsection{Ranking}
+
+		\hl{Pendente...} 
+		Dados
+		
+		\hl{Pendente...}
+		Tela \ref{fig:mozaic-ranking}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Tela de ranking do Mozaic}
+		\label{fig:mozaic-ranking}
+		\end{figure}
+
+	\subsubsection{País}
+
+		\hl{Pendente...} 
+		Filtros
+
+		\hl{Pendente...} 
+		Dados
+
+		\hl{Pendente...}
+		Tela \ref{fig:mozaic-pais}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Tela do Mozaic para análise especifica de um País}
+		\label{fig:mozaic-pais}
+		\end{figure}
+
+	\subsubsection{Confronto direto}
+
+		\hl{Pendente...} 
+		Filtros
+
+		\hl{Pendente...} 
+		Dados
+
+		\hl{Pendente...}
+		Tela \ref{fig:mozaic-confronto-direto}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Tela do Mozaic para análise de um confronto entre Países}
+		\label{fig:mozaic-confronto-direto}
+		\end{figure}
+		
+\begin{comment}
 		Configurar, CDN (Content Delivery Network)
 		
 		https://angularjs.org/
@@ -361,78 +624,35 @@ A arquitetura de \emph{sotfware} 1
 
 		\subsubsection{Análise de dados histórica}
 		
-		.
+		.		
+\end{comment}
 
-\section{Integração com MVC server-side}
-
-	O sistema Mozaic prova que é possível desenvolver uma aplicação \emph{web} para análise de dados diretamente no front-end através de um cubo de dados estático mapeado em JavaScript no formato JSON, porém nem sempre os dados disponibilizados para análise serão fixos. é interessante que o cubo de dados não seja estático.
-	
-	Consumindo serviços REST
-
-	\subsubsection{API de serviços REST}
-		
-		Para o desenvolvimento do sistema de informação Mozaic, uma simples API (Application Programming Interface) de serviços REST (Representational State Transfer) foi implementada para que o Mozaic consuma os dados iniciais e monte os dashboards e filtros no front-end.
-		A API (Application Programming Interface) fornece o serviço carregarDados, suportando o método HTTP (Hypertext Transfer Protocol) \textbf{GET} sem esperar parâmetros. Este serviço, escrito em Java e publicado com o \emph{framework} Spark, é responsável por carregar todos os dados dos copas do mundo da FIFA (Fédération Internationale de Football Association) e retornar os mesmos como um objeto JSON como pode ser visto na figura \ref{fig:6}. Inicialmente os dados foram colocados em um arquivo físico, pois o foco deste artigo é a manipulação dos dados diretamente no front-end sobre cubo de dados gerado pelo HyperCube. Os dados também poderiam ser obtidos através de um DW (Data Warehouse) em banco de dados relacional ou, melhor ainda, banco de dados não-relacional (NoSQL - Not Only SQL), porém conexão e consulta a banco de dados fogem um pouco do escopo do artigo.
-		
-		\begin{figure}[ht]
-		\centering
-		\includegraphics[width=.5\textwidth]{6.jpg}
-		\caption{IMAGEM DO OBJETO JSON]}
-		\label{fig:6}
-		\end{figure}
-		
-		Fato
-		
-		Medida
-		
-		HyperCube
-		
-		https://github.com/thesmart/js-hypercube
-		
-		Para usar o HyperCube, criamos o cubo de dados através de um objeto javacript no formato JSON[SIGLA], com uma estrutura predefinida contendo o momento do dado, fatos e medidas como é demonstrado na imagem abaixo:
-		[IMG]
-		O HyperCube deserializa o objeto e monta o cubo de dados para ser utilizado, ou seja, disponível para ser filtrado e calcular dados através de funções de agregação
-
-	\subsection{Spark}
-
-		Spark é um micro web \emph{framework} desenvolvido que tem como característica viabilizar a criação de aplicações \emph{web} em Java com o mínimo de esforço possível, sem a necessidade de configurações em XML (eXtensible Markup Language).
-		
-		Inspirado no \emph{framework} Sinatra, o Spark é muito leve e tem como foco a facilidade do desenvolvimento web puramente Java de forma realmente simples e elegante, o que torna divertido para os desenvolvedores.
-		
-		O Spark é intrigante pelo fato de sua simplicidade \cite{francisco:14}. Está na versão 2.0.0, uma versão que foi desenvolvida incluindo adaptações para a versão 8 da linguagem Java, atualizando o \emph{framework} e usando recursos novos como a funcionalidade \textbf{Lambda}, deixando assim o \emph{framework} ainda mais elegante.
-		
-		Para exemplificar a simplicidade de um serviço REST () usando o Spark, o próprio site do Spark apresenta o serviço HelloWorld, respondendo para o mapeamento "/hello" através do método HTTP GET como mostra a figura \ref{fig:3}. Para executar o serviço, ou seja, colocá-lo no ar ou disponibilizá-lo para consumo, basta executar a classe como um programa Java, pois o Spark possui o servidor de aplicação Jetty embutido.
-		
-		\begin{figure}[ht]
-		\centering
-		\includegraphics[width=1\textwidth]{3.jpg}
-		\caption{IMAGEM DO SERVIÇO HELLOWORLD}
-		\label{fig:3}
-		\end{figure}
-		
-		Com o serviço pronto, o acesso já pode ser realizado através de uma requisição HTTP. No exemplo apresentado no site, a URL do serviço é \textbf{http://localhost:4567/hello}, onde o \emph{host} é \textbf{localhost} (servidor local) e a porta é \textbf{4567}, a porta padrão do Spark que pode ser configurada. Realizando a chamada do serviço no navegador, obtemos o resultado apresentado na figura \ref{fig:4}.
-		
-		\begin{figure}[ht]
-		\centering
-		\includegraphics[width=1\textwidth]{4.jpg}
-		\caption{SERVIÇO EXECUTADO NO NAVEGADOR}
-		\label{fig:4}
-		\end{figure}
-		
-		Fora a facilidade do desenvolvimento com Spark, a performance também é um ponto positivo do framework, mesmo rodando sobre a JVM (Java Virtual Machine). Foi colocado a prova e comparado com outras tecnologias e o resultado foi útimo \cite{bijan:14}.
-		Se você quiser saber mais sobre este projeto, acesse o site http://www.sparkjava.com.
-		
 
 \section{Próximos passos}
 
+	\hl{Pendente...} 
 	Login e controle de acesso
+
+	\hl{Pendente...} 
 	WebSocket
-	Filas RabbitMQ
+
+	\hl{Pendente...} 
+	Filas Rabbit
+
+	\hl{Pendente...} 
 	Hazelcast
+
+	\hl{Pendente...} 
 	NoSQL
+	
+	\hl{Pendente...} 
 	MongoDB
 
 \section{Considerações Finais}
+
+	\hl{Pendente...} 
+
+\begin{comment}
 
 	O objetivo deste trabalho era propor um sistema de informação especialista em estatística com algumas características específicas. Entre elas está a centralização do mecanismo de manipulação de dados e a análise dos mesmos diretamente na interface, trazendo consigo uma abordagem diferente no que diz respeito a filtros e segmentações em cubo de dados OLAP, e o uso de ferramentas e tecnologias modernas em sua arquitetura beneficiando e enriquecendo o seu desenvolvimento.
 	
@@ -445,6 +665,7 @@ A arquitetura de \emph{sotfware} 1
 	Mobile
 	
 	Recomendo a utilização do Mozaic no meio corporativo. Colocando-o em ambiente de produção será importante para sua evoluição, seja aprimorando a arquitetura ou na adaptação a novos modelos de negócio.
+\end{comment}
 
 \bibliographystyle{sbc}
 \bibliography{artigo-rafael-oliveira}

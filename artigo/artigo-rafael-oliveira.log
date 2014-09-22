@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.30)  15 SEP 2014 12:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.30)  21 SEP 2014 12:06
 entering extended mode
 **C:/Pessoal/Estudos/UniRitter*-*Pós*Graduação/github/pos/trunk/artigo/artig
 o-rafael-oliveira.tex
@@ -130,6 +130,51 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \CommentStream=\write3
 
 Excluding comment 'comment')
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
+\lst@mode=\count92
+\lst@gtempboxa=\box27
+\lst@token=\toks17
+\lst@length=\count93
+\lst@currlwidth=\dimen122
+\lst@column=\count94
+\lst@pos=\count95
+\lst@lostspace=\dimen123
+\lst@width=\dimen124
+\lst@newlines=\count96
+\lst@lineno=\count97
+\lst@maxwidth=\dimen125
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count98
+\lst@skipnumbers=\count99
+\lst@framebox=\box28
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
+File: listings.cfg 2014/09/06 1.5e listings configuration
+))
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\soul\soul.sty"
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks18
+\SOUL@lasttoken=\toks19
+\SOUL@cmds=\toks20
+\SOUL@buffer=\toks21
+\SOUL@token=\toks22
+\SOUL@spaceskip=\skip45
+\SOUL@ttwidth=\dimen126
+\SOUL@uldp=\dimen127
+\SOUL@ulht=\dimen128
+)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
@@ -144,35 +189,35 @@ Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count92
-\U@D=\dimen122
+\babel@savecnt=\count100
+\U@D=\dimen129
 )
 \l@brazil = a dialect from \language\l@portuges 
 Package babel Info: Making " an active character on input line 145.
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
+\inpenc@prehook=\toks23
+\inpenc@posthook=\toks24
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\latin1.def"
 File: latin1.def 2008/03/30 v1.1d Input encoding file
 ))
 ("C:\Pessoal\Estudos\UniRitter - Pós Graduação\github\pos\trunk\artigo\artig
 o-rafael-oliveira.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 48.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -212,135 +257,158 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count93
-\scratchdimen=\dimen123
-\scratchbox=\box27
-\nofMPsegments=\count94
-\nofMParguments=\count95
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count96
-\MPscratchDim=\dimen124
-\MPnumerator=\count97
-\makeMPintoPDFobject=\count98
-\everyMPtoPDFconversion=\toks20
+\scratchcounter=\count101
+\scratchdimen=\dimen130
+\scratchbox=\box29
+\nofMPsegments=\count102
+\nofMParguments=\count103
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen131
+\MPnumerator=\count105
+\makeMPintoPDFobject=\count106
+\everyMPtoPDFconversion=\toks26
 )
+\c@lstlisting=\count107
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <16> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 30.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 30.
+(Font)              <12> on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 30.
+(Font)              <8> on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 30.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 30.
+(Font)              <6> on input line 50.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 50.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (22.02623pt too wide) in paragraph at lines 30--30
+Overfull \hbox (22.02623pt too wide) in paragraph at lines 50--50
  [][] 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 32.
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 52.
+Excluding 'comment' comment.
+Underfull \hbox (badness 4913) in paragraph at lines 64--67
+[]\OT1/ptm/m/it/12 O pre-sente tra-ba-lho re-lata um es-tudo de caso re-fe-rent
+e a
+ []
+
+Excluding 'comment' comment.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 50.
-[1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 80.
+ [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<1.jpg, id=11, 351.3125pt x 150.5625pt>
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 80.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 81.
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
-File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
-)
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 81.
- [2 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/1.
-jpg>]
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 104.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] Excluding 'comment' comme
+nt. <1.jpg, id=11, 351.3125pt x 150.5625pt>
 File: 1.jpg Graphic file (type jpg)
 
 <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 116.
+Package pdftex.def Info: 1.jpg used on input line 146.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 147.
+
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 147.
+ [2]
+File: 1.jpg Graphic file (type jpg)
+
+<use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 158.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 126.
+Package pdftex.def Info: 1.jpg used on input line 168.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [3] [4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ Excluding 'comment' comment. [3 <C:/Pessoal/Estudos/UniRitter - Pós Graduaç�
+�o/github/pos/trunk/artigo/1.jpg>]
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 202.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 
- [5]
+Excluding 'comment' comment. [4] Excluding 'comment' comment.
 Excluding 'comment' comment.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 236.
+Package pdftex.def Info: 1.jpg used on input line 319.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
-
-<2.jpg, id=26, 351.3125pt x 150.5625pt>
-File: 2.jpg Graphic file (type jpg)
- <use 2.jpg>
-Package pdftex.def Info: 2.jpg used on input line 243.
-(pdftex.def)             Requested size: 128.0387pt x 54.87558pt.
- [6]
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 326.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+ [5]
 Excluding 'comment' comment. Excluding 'comment' comment.
-Excluding 'comment' comment. <5.jpg, id=30, 351.3125pt x 150.5625pt>
-File: 5.jpg Graphic file (type jpg)
+Excluding 'comment' comment.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 401.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+ [6]
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 410.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 433.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+ [7]
+File: 1.jpg Graphic file (type jpg)
 
-<use 5.jpg>
-Package pdftex.def Info: 5.jpg used on input line 309.
+<use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 448.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [7 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/2.
-jpg>] <7.jpg, id=35, 351.3125pt x 150.5625pt>
-File: 7.jpg Graphic file (type jpg)
- <use 7.jpg>
-Package pdftex.def Info: 7.jpg used on input line 335.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 459.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [8 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/5.
-jpg> <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/7
-.jpg>]
-[9] <6.jpg, id=42, 351.3125pt x 150.5625pt>
-File: 6.jpg Graphic file (type jpg)
- <use 6.jpg>
-Package pdftex.def Info: 6.jpg used on input line 379.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 466.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [10 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/6
-.jpg>]
-<3.jpg, id=46, 351.3125pt x 150.5625pt>
-File: 3.jpg Graphic file (type jpg)
- <use 3.jpg>
-Package pdftex.def Info: 3.jpg used on input line 408.
-(pdftex.def)             Requested size: 426.79135pt x 182.92552pt.
+ [8] Excluding 'comment' comment.
+File: 1.jpg Graphic file (type jpg)
 
-<4.jpg, id=47, 351.3125pt x 150.5625pt>
-File: 4.jpg Graphic file (type jpg)
- <use 4.jpg>
-Package pdftex.def Info: 4.jpg used on input line 417.
-(pdftex.def)             Requested size: 426.79135pt x 182.92552pt.
- [11 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/3
-.jpg> <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/
-4.jpg>]
+<use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 539.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 552.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 567.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+ [9]
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 585.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+File: 1.jpg Graphic file (type jpg)
+ <use 1.jpg>
+Package pdftex.def Info: 1.jpg used on input line 603.
+(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
+
+Excluding 'comment' comment. [10] Excluding 'comment' comment.
 ("C:\Pessoal\Estudos\UniRitter - Pós Graduação\github\pos\trunk\artigo\artig
-o-rafael-oliveira.bbl") [12]
+o-rafael-oliveira.bbl") [11]
 ("C:\Pessoal\Estudos\UniRitter - Pós Graduação\github\pos\trunk\artigo\artig
 o-rafael-oliveira.aux") ) 
 Here is how much of TeX's memory you used:
- 2780 strings out of 493921
- 38088 string characters out of 3147282
- 103573 words of memory out of 3000000
- 6028 multiletter control sequences out of 15000+200000
- 21033 words of font info for 44 fonts, out of 3000000 for 9000
+ 4309 strings out of 493921
+ 59705 string characters out of 3147282
+ 131668 words of memory out of 3000000
+ 7542 multiletter control sequences out of 15000+200000
+ 21346 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 30i,10n,28p,991b,310s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,10n,32p,681b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/
 8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
 C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
@@ -349,9 +417,9 @@ C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
 /urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on artigo-rafael-oliveira.pdf (12 pages, 156281 bytes).
+Output written on artigo-rafael-oliveira.pdf (11 pages, 130954 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
+ 72 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
