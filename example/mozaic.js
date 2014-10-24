@@ -79,6 +79,36 @@ mozaic.controller('MozaicFilterController', ['$rootScope', '$scope', function($r
 				}
 			}
 		});
+
+
+		if (true || dashboard == "Histórico") {
+			var nid = "vitorias-empates-derrotas";
+			var dados = [];
+			var somado = $scope.cuboParticipacoesFiltrado.sum();
+			dados.push({label: "Vitórias", value: somado['vitorias']});
+			dados.push({label: "Empates", value: somado['empates']});
+			dados.push({label: "Derrotas", value: somado['derrotas']});
+			$("#" + nid).html("");
+			//Morris.Donut({element: nid, data: dados});
+
+	      // Create the data table.
+	      var data = new google.visualization.DataTable();
+	      data.addColumn('string', 'Topping');
+	      data.addColumn('number', 'Slices');
+	      data.addRows([
+	        ['Vitórias', somado['vitorias']],
+	        ['Empates', somado['empates']],
+	        ['Derrotas', somado['derrotas']]
+	      ]);
+
+	      // Set chart options
+	      var options = {'title':'Title', 'colors': ['green', 'yellow', 'red']};
+
+	      // Instantiate and draw our chart, passing in some options.
+	      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	      chart.draw(data, options);
+
+		}
 	};
 
 	$scope.limpar = function(fato) {

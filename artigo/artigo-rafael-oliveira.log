@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.30)  25 SEP 2014 18:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.8.30)  1 OCT 2014 00:06
 entering extended mode
 **C:/Pessoal/Estudos/UniRitter*-*Pós*Graduação/github/pos/trunk/artigo/artig
 o-rafael-oliveira.tex
@@ -291,45 +291,45 @@ Overfull \hbox (22.02623pt too wide) in paragraph at lines 50--50
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 52.
 Excluding 'comment' comment.
-Underfull \hbox (badness 4913) in paragraph at lines 64--67
+Underfull \hbox (badness 4913) in paragraph at lines 68--71
 []\OT1/ptm/m/it/12 O pre-sente tra-ba-lho re-lata um es-tudo de caso re-fe-rent
 e a
  []
 
 Excluding 'comment' comment.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 80.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] Excluding 'comment' comme
-nt.
-<javascript-inclusao-script.jpg, id=11, 285.065pt x 154.5775pt>
+nt. [2]
+<javascript-inclusao-script.jpg, id=15, 285.065pt x 154.5775pt>
 File: javascript-inclusao-script.jpg Graphic file (type jpg)
 
 <use javascript-inclusao-script.jpg>
-Package pdftex.def Info: javascript-inclusao-script.jpg used on input line 146.
+Package pdftex.def Info: javascript-inclusao-script.jpg used on input line 150.
 
 (pdftex.def)             Requested size: 213.39568pt x 115.71347pt.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 147.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 151.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 147.
- [2]
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 151.
+
 <json-formato.jpg, id=16, 220.825pt x 286.06876pt>
 File: json-formato.jpg Graphic file (type jpg)
  <use json-formato.jpg>
-Package pdftex.def Info: json-formato.jpg used on input line 158.
+Package pdftex.def Info: json-formato.jpg used on input line 162.
 (pdftex.def)             Requested size: 170.71393pt x 221.1641pt.
 
 <json-comparativo-xml.jpg, id=17, 589.20125pt x 357.335pt>
 File: json-comparativo-xml.jpg Graphic file (type jpg)
 
 <use json-comparativo-xml.jpg>
-Package pdftex.def Info: json-comparativo-xml.jpg used on input line 168.
+Package pdftex.def Info: json-comparativo-xml.jpg used on input line 172.
 (pdftex.def)             Requested size: 426.79135pt x 258.84041pt.
  Excluding 'comment' comment. [3 <C:/Pessoal/Estudos/UniRitter - Pós Graduaç�
 �o/github/pos/trunk/artigo/javascript-inclusao-script.jpg> <C:/Pessoal/Estudos/
@@ -337,79 +337,79 @@ UniRitter - Pós Graduação/github/pos/trunk/artigo/json-formato.jpg>] <1.jpg,
  id=22, 351.3125pt x 150.5625pt>
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 202.
+Package pdftex.def Info: 1.jpg used on input line 206.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 
 [4 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/jso
-n-comparativo-xml.jpg> <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/
-pos/trunk/artigo/1.jpg>] Excluding 'comment' comment.
-Excluding 'comment' comment. Excluding 'comment' comment.
-<hypercube-mapa.jpg, id=26, 547.04375pt x 365.365pt>
+n-comparativo-xml.jpg>] Excluding 'comment' comment.
+Excluding 'comment' comment. Excluding 'comment' comment. [5 <C:/Pessoal/Estudo
+s/UniRitter - Pós Graduação/github/pos/trunk/artigo/1.jpg>]
+<hypercube-mapa.jpg, id=29, 547.04375pt x 365.365pt>
 File: hypercube-mapa.jpg Graphic file (type jpg)
  <use hypercube-mapa.jpg>
-Package pdftex.def Info: hypercube-mapa.jpg used on input line 319.
+Package pdftex.def Info: hypercube-mapa.jpg used on input line 323.
 (pdftex.def)             Requested size: 426.79135pt x 285.05045pt.
 
-<hypercube-cubo.jpg, id=27, 422.57875pt x 29.10875pt>
+<hypercube-cubo.jpg, id=30, 422.57875pt x 29.10875pt>
 File: hypercube-cubo.jpg Graphic file (type jpg)
  <use hypercube-cubo.jpg>
-Package pdftex.def Info: hypercube-cubo.jpg used on input line 326.
+Package pdftex.def Info: hypercube-cubo.jpg used on input line 330.
 (pdftex.def)             Requested size: 341.43437pt x 23.51976pt.
 
-[5] [6 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo
-/hypercube-mapa.jpg> <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/po
-s/trunk/artigo/hypercube-cubo.jpg>] Excluding 'comment' comment.
+[6 <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/trunk/artigo/hyp
+ercube-mapa.jpg> <C:/Pessoal/Estudos/UniRitter - Pós Graduação/github/pos/tr
+unk/artigo/hypercube-cubo.jpg>] Excluding 'comment' comment.
 Excluding 'comment' comment. Excluding 'comment' comment.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 401.
+Package pdftex.def Info: 1.jpg used on input line 405.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
 
 <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 410.
+Package pdftex.def Info: 1.jpg used on input line 414.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
  [7]
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 433.
+Package pdftex.def Info: 1.jpg used on input line 437.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
  [8]
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 448.
+Package pdftex.def Info: 1.jpg used on input line 452.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 459.
+Package pdftex.def Info: 1.jpg used on input line 463.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 466.
+Package pdftex.def Info: 1.jpg used on input line 470.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
  [9]
 Excluding 'comment' comment.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 539.
+Package pdftex.def Info: 1.jpg used on input line 543.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 552.
+Package pdftex.def Info: 1.jpg used on input line 556.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 567.
+Package pdftex.def Info: 1.jpg used on input line 571.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
  [10]
 File: 1.jpg Graphic file (type jpg)
 
 <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 585.
+Package pdftex.def Info: 1.jpg used on input line 589.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
 File: 1.jpg Graphic file (type jpg)
  <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 603.
+Package pdftex.def Info: 1.jpg used on input line 607.
 (pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
  Excluding 'comment' comment. [11]
 Excluding 'comment' comment.
@@ -420,7 +420,7 @@ o-rafael-oliveira.aux") )
 Here is how much of TeX's memory you used:
  4334 strings out of 493921
  60330 string characters out of 3147282
- 131669 words of memory out of 3000000
+ 130670 words of memory out of 3000000
  7562 multiletter control sequences out of 15000+200000
  21346 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -433,7 +433,7 @@ C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program
 /urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on artigo-rafael-oliveira.pdf (12 pages, 591566 bytes).
+Output written on artigo-rafael-oliveira.pdf (12 pages, 592016 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

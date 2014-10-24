@@ -178,7 +178,7 @@ html, body {
 .flexGRID .row .col_10,
 .flexGRID .row .col_11,
 .flexGRID .row .col_12 {
-	background: #FFF;
+	background: url('bg.jpg') #FFF;
 	border-radius: 5px;
 }
 .flexGRID .row:first-child .col_12 {

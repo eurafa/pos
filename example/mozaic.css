@@ -1,3 +1,7 @@
+body {
+	background: url('bg.jpg');
+}
+
 a {
 	color: #eee;
 }
@@ -38,4 +42,21 @@ legend {
 #filtros ul li {
 	float: left;
 	line-height: 20px;
+}
+
+.title {
+	font-family: 'Open Sans';
+	font-size: 24px;
+	font-weight: 400;	
+	color: #34495e;
+}
+
+.value {
+	font-family: 'Open Sans';
+	font-size: 64px;
+	font-weight: 800;
+	color: #34495e;
+	width: 100%;
+	text-align: right;
+	text-shadow: 1px 1px 0 #000;
 }
