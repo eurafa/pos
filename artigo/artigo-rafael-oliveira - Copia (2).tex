@@ -1,0 +1,745 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage{comment}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{soul}
+\usepackage[brazil]{babel}   
+\usepackage[latin1]{inputenc}  
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.9,0.9,0.9}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{mygray},  % choose the background color
+  basicstyle=\footnotesize,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+     
+\sloppy
+
+\title{Implementando um sistema de informação para análise de dados usando SPA e MVC client-side}
+%\title{Implementando um sistema de informação de análise de dados focado no front-end usando SPA e MVC client-side}
+%\title{ Estudo de caso de um sistema de informação de estatística usando arquitetura\\MVC client-side}
+
+\author{
+	Rafael Andrade de Oliveira\inst{1},
+	Diogo Lucas\inst{1}
+}
+
+\address{
+	Pós-Graduação em Tecnologias Aplicadas a Sistemas de Informação com Métodos Ágeis
+	\\Centro Universitário Ritter dos Reis (UniRitter)
+	\\Caixa Postal 1355 -- 90.840-440 -- Porto Alegre -- RS -- Brasil 
+	\email{
+		eu.rafa@gmail.com,
+		diogolucas@gmail.com
+	}
+}
+
+\begin{document} 
+
+	\maketitle
+
+\begin{abstract}
+
+	The present paper reports a case study of the implementation of an information system for data analysis, aiming to demonstrate the analysis of multi-dimensional data cubes on the client side.
+	This case study also includes an evaluation of the proposed architecture for the development of information system, focused on the front end, involves the concept SPA (Single-Page Application) and the MVC (Model-View-Controller) client-side , and REST services (Representational State Transfer).
+	In Article scope are detailed in the characteristics and differences of this information and its system architecture, as well as the form of manipulation of data cube.
+
+\end{abstract}
+     
+\begin{resumo} 
+
+	O presente trabalho relata um estudo de caso referente a implementação de um sistema de informação para análise de dados, tendo como objetivo demonstrar a realização de análises sobre cubos de dados multi-dimensionais no lado cliente.
+	Este estudo de caso também abrange uma avaliação da arquitetura proposta para o desenvolvimento deste sistema de informação que, focado no front-end, envolve o conceito SPA (Single-Page Application) e o modelo MVC (Model-View-Controller) client-side, além de serviços REST (REpresentational State Transfer).
+	No escopo do artigo serão detalhadas das características e diferenciais deste sistema de informação e sua arquitetura, bem como a forma de manipulação sobre cubo de dados.
+	
+\end{resumo}
+
+\section{Introdução}\label{introducao}
+
+	Este artigo irá apresentar a implementação de um sistema de informação para análise de dados com foco no \emph{front-end}, trazendo consigo uma proposta de arquitetura de \emph{software} moderna voltada para a \emph{web}.
+	O objetivo desta implementação é possibilitar a realização de análises sobre cubo de dados diretamente no lado cliente, evitando requisições HTTP (HyperText Transfer Protocol) adicionais, trocas de mensagens ou consumo de serviços \emph{web} a cada interação do usuário ao aplicar filtros e segmentações.
+	
+	A escolha do tema justifica-se pela importância da análise de dados para tomada de decisão aliada a competitividade no mercado corporativo e também a relevância do uso de uma arquitetura de \emph{software} moderna, que acompanhe a evolução da Internet e linguagens de programação.
+
+	Em relação a análise de dados, percebemos que atualmente muitas empresas estão investindo em soluções de apoio de decisão como BI (Business Intelligence) e BigData, entendendo que a análise do seu próprio negócio e o levantamento de indicadores é importante para alcançar melhores resultados.
+	Sobre a arquitetura de \emph{software}, sabe-se da necessidade de evolução constante para acompanhar as inovações tecnológicas, além de mudanças comportamentais e culturais da sociedade.
+	O surgimento de novos dispositivos móveis como tablets e a modernização de celulares (\emph{smartphones}) exigem avanços nos aplicativos fazendo com que a arquitetura de \emph{software} se envolvesse por exemplo com mobilidade, computação na nuvem (\emph{cloud computing}) e design responsivo.
+	Além disso, o volume de pessoas com acesso a Internet e a milhares de aplicativos estimula a competitividade, fazendo com que a arquitetura tenha também a preocupação com UX (User eXperience), sem esquecer necessidades óbvias como desempenho e escalabilidade.
+	
+	Para servir de modelo da implementação de um sistema de informação para análise de dados sobre uma arquitetura de \emph{software} com o foco no lado cliente, foi desenvolvido o sistema \textbf{Statz}.
+	Antes de apresentar a arquitetura proposta e a implementação do Statz, descritas na seção \ref{statz}, é interessante alinhar alguns pontos facilitando o melhor entendimento do sistema e da arquitetura proposta.
+	As próximas seções abordam conceitos, tecnologias e \emph{frameworks} utilizados na prova de conceito da arquitetura através do sistema de informação Statz.
+
+\section{Referencial teórico}\label{referencial-teorico}
+
+	Nesta seção estão descritos os conceitos e as tecnologias envolvidas no desenvolvimento do Statz e na arquitetura proposta.
+	Com isso, ficará mais fácil compreender a proposta deste artigo e a relação dos conceitos com a arquitetura do Statz.
+
+	\subsection{OLAP}
+	
+		Quando falamos de análise de dados, um leque de opções e níveis de análise podem aparecer.
+		Em um contexto mais analítico e interativo, voltado para tomada de decisão rápida sobre grandes volumes de dados, o cenário se estreita a análises sobre cubo de dados multi-dimensional.
+
+		Nesse sentido, entra a tecnologia OLAP (On-Line Analytical Processing) que significa processamento analítico online.
+		OLAP nada mais é do que uma tecnologia de banco de dados otimizado na forma de cubo de dados multidimensional, diferente de um banco de dados relacional baseado em linhas e coluas.
+
+		É relevante detalhar alguns dos conceitos de OLAP, que possuem relação com o presente artigo.
+		Seguem abaixo alguns conceitos relacionados a OLAP.
+
+		\subsubsection{Cubo}
+
+			Um cubo de dados é uma estrutura de dados que combina dados em várias dimensões (multidimensional), uma hierarquia em vários níveis de granularidades como demonstrado na figura \ref{fig:cubo-dados}.
+
+			\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.5\textwidth]{1.jpg}
+			\caption{Representação de um cubo de dados multidimensional}
+			\label{fig:cubo-dados}
+			\end{figure}
+
+			Normalmente possui dados históricos agregados e sumarizados, facilitando o acesso as informações.
+			É chamado de cubo devido ao seu conceito complexo, sem relação com o sentido matemático onde cubo é uma geometria de lados iguais.
+
+			Um modelo de dados multidimensional normalmente é representado no formato de estrela (Star Schema), composto por tabelas de fato e dimensões como mostra a figura \ref{fig:modelo-estrela}.
+
+			\begin{figure}[ht]
+			\centering
+			\includegraphics[width=.5\textwidth]{1.jpg}
+			\caption{Exemplo de um modelo de dados multidimensional no formato de estrela}
+			\label{fig:modelo-estrela}
+			\end{figure}
+
+		\subsubsection{Fato}
+
+			Representa uma coleção de dados relacionados que podem servir a análise.
+			Uma tabela fato possui os dados agregados baseados em uma entidade e seus relacionamentos.
+
+		\subsubsection{Medida}
+		
+			Medidas correspondem a atributos de um fato cubo de dados.
+			Normalmente que representam indicadores, pois são dados quantitativos pré-calculados.
+
+		\subsubsection{Dimensão}
+
+			As dimensões de um cubo de dados representam visões ou contextos diferentes sobre um fato.
+			É como se fosse uma coordenada de análise sobre o cubo de dados multidimensional.
+			Existe uma dimensão especial relativa ao tempo (temporal) que caracteriza uma data/hora.
+			Para exemplificar, dimensões para uma medida "Total de vendas" poderiam ser "cliente", "cidade", "data", "produto" e etc, que nada mais são do que visões diferentes sobre uma determinada medida.
+
+		\subsubsection{Membro}
+
+			Membros correspondem a elementos usados para determinar o dado de uma dimensão.
+			Por exemplo "mês Fevereiro" e "ano 2014" são membros de uma dimensão temporal.
+			Em algumas situações, podem existir membros calculados.
+
+		\subsubsection{Hierarquia}
+
+			Este componente apenas organiza o cubo de dados, definindo níveis de agregação e granularidade do cubo, relacionando membros a dimensões.
+
+		\subsection{Operações}
+
+			Abaixo estão detalhadas algumas operações básicas realizadas sobre cubos de dados multidimensionais.
+
+		\subsubsection{Drill down}
+
+			\emph{Drill down} é a operação utilizada para detalhar mais o dado.
+			Segundo \cite{bi-enfoque}, é a capacidade de chegar a mais detalhes em um ou vários níveis.
+
+		\subsubsection{Roll up}
+
+			\emph{Roll up} representa a operação utilizada para abstrair mais os dados, reduzindo o nível de detalhamento atual.
+			O funcionamento é exatamente contrário a operação anterior.
+			Quando maior o nível de granularidade, menor o nível de detalhamento.
+
+		\subsubsection{Slice}
+
+			A operação utilizada para a redução do universo de dados do cubo chama-se \emph{slice}.
+			Na prática, filtra ou fatia o cubo de dados multidimensional.
+
+		\subsubsection{Dice}
+
+			Outra operação que reduz o universo de dados do cubo é a \emph{dice}, porém esta operação descarta parte do cubo de dados. 
+
+	\subsection{JavaScript}
+	
+		JavaScript é considerada a linguagem de programação da Internet.
+		Criada inicialmente para os navegadores Netscape, atualmente está presente em todos os navegadores de Internet.
+		As páginas de Internet são baseadas em três tecnologias: HTML (HyperText Markup Language), CSS (Cascading Style Sheets) e JavaScript.
+		Após muito tempo, HTML e CSS sofreram atualizações trazendo respectivamente nas versões HTML5 e CSS3 avanços consideráveis para a geração de páginas de Internet.
+		
+		Por outro lado, o JavaScript evolui de forma significativa com a criação de novos frameworks, tornando-se, a cada dia, mais poderoso e utilizado entre os desenvolvedores \cite{ang-prat}.
+		O JavaScript provê uma maior interatividade com a página, por exemplo respondendo a eventos de botões, validação de campos de formulário, manipulação de elementos.
+		
+		Atualmente existem milhares de bibliotecas JavaScript para fins diversos e para usá-las é necessário apenas declará-las na página com a \emph{tag} HTML $<$script$>$ como mostra a figura \ref{fig:js}.
+		Algumas destas bibliotecas são amplamente utilizadas, como a popular biblioteca chamada jQuery, famosa pela sua facilidade na manipulação de elementos DOM (Document Object Model), estilos CSS, eventos HTML, tratamento de requisições usando AJAX (Asynchronous JavaScript and XML) e ainda de forma compatível com a maioria dos navegadores e respectivas versões.
+	
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.7\textwidth]{javascript-inclusao-script.jpg}
+		\caption{Exemplo de inclusão de uma biblioteca JavaScript em uma página HTML}
+		\label{fig:js}
+		\end{figure}
+	
+	\subsection{JSON}
+	
+		Uma notação derivada da linguagem JavaScript chamada JSON (JavaScript Object Notation) vem ganhando popularidade nos últimos anos.
+		Criada por Douglas Crockford, JSON é uma estrutura de dados auto-descritiva, associativa e fácil de ler como demonstrado na figura \ref{fig:formato-json}.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.4\textwidth]{json-formato.jpg}
+		\caption{Exemplo de estrutura de dados no formato JSON}
+		\label{fig:formato-json}
+		\end{figure}
+	
+		O JSON é um formato de serialização de dados com base em literais de JavaScript \cite{js-guide}.
+		Este formato de dados tem sido bastante utilizado no desenvolvimento de aplicações \emph{web} e serviços REST (descrito na seção \ref{rest}), em substituição ao formato XML (eXtensible Markup Language) que é mais verboso como se pode perceber no comparativo representado na figura \ref{fig:js-xml-comparativo}.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{json-comparativo-xml.jpg}
+		\caption{Comparativo entre os formatos JSON e XML}
+		\label{fig:js-xml-comparativo}
+		\end{figure}
+	
+	\subsection{REST}\label{rest}
+
+		REST é um modelo arquitetural para a criação de \emph{web services} proposto por Roy Fielding, um dos principais autores do protocolo HTTP.
+		É um estilo de arquitetura de software para sistemas distribuídos simples e fácil de entender.
+		Sua abordagem necessita apenas do suporte a HTTP/HTTPS onde serão realizadas chamadas usando os métodos GET, PUT, POST e DELETE.
+
+		Algumas de suas vantagens são: simplicidade, interoperabilidade, expansão, desempenho e cache.
+		REST é um padrão de \emph{web services} livre, diferente de SOAP ou ASMX, que possuem protocolos e conjuntos de regras bem definidos como um contrato.
+		Essa liberdade traz uma falta de padrão, que pode ser vista como uma desvantagem dessa tecnologia.
+
+		Um serviço que usa o estilo de arquitetura do REST geralmente é chamado de RESTful.
+		Em comparação com SOAP, por exemplo, uma requisição HTTP é equivalente a uma chamada de um método (operação) em um objeto (recurso) residente no servidor (endpoint).
+		Devido ao REST ser tão livre, seus serviços não têm um padrão definido, embora existam algumas práticas comuns na composição de URI (Uniform Resource Identifier).
+
+	\subsection{MVC}\label{mvc}
+	
+		A busca constante pela melhor forma de desenvolvimento de \emph{software} provoca uma série de estudos. 
+		Muitos deles resultaram na criação dos chamados Padrões de Projeto (Design Patterns), que servem de modelos arquiteturais para resolverem problemas comuns de desenvolvimento.
+		Estes padrões focam no reaproveitamento de soluções, seguindo alguns princípios como SOC (Separation Of Concerns), DRY (Don't Repeat Yourself), KISS (Keep It Simple Stupid) que guiam os desenvolvedores e arquitetos de \emph{software} em relação a separação de responsabilidades, não repetir ou querer reinventar a roda e manter códigos simples. 
+		Foram pensados, testados e aprimorados pro programadores experientes, dando a confiança necessária para o seu reuso.
+		
+		A grande evolução no desenvolvimento \emph{web} veio com a recomendação do uso do padrão arquitetural MVC (Model-View-Controller) \cite{intro-arq-des-sw}.
+		Este modelo visa a organização e a padronização da arquitetura de \emph{software}, separando a arquitetura em três camadas como mostra a figura \ref{fig:0}.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Desenho do modelo MVC e a interação entre as camadas}
+		\label{fig:0}
+		\end{figure}
+		
+		No modelo MVC cada um dos componentes tem responsabilidade bem definida.
+		Model é o componente responsável pela representação do modelo de dados e mecanismo de persistência e View é responsável pela apresentação e interação com o usuário final. Já o Controller é o mecanismo intermediário responsável por receber e responder a eventos e ações entre os componentes Model e View.
+		MVC é um padrão de projeto arquitetônico que incentiva a organização de uma melhor aplicação através de uma separação de interesses \cite{lng-js-dp}.
+	
+	\subsection{MVC client-side}\label{mvc-client-side}
+	
+		MVC client-side nada mais é do que o modelo MVC descrito na seção \ref{mvc} aplicado no lado cliente (\emph{client-side}).
+		Muitos desenvolvedores consideram MVC como o modelo ideal de arquitetura de \emph{software}.
+		Mesmo assim, este modelo de arquitetura vem sofrendo variações.
+		Uma vez que o modelo (Model) e a apresentação (View) são essenciais para os sistemas, estas variações ocorrem no componente intermediário (Controller), dando lugar a novos modelos de arquitetura conhecidos como a família MV* ou MVW (Model-View-Whatever).
+
+	\subsection{Single-Page Application}\label{spa}
+
+		Single-Page Application (SPA) é uma abordagem atual utilizada em páginas de Internet consideradas "ricas".
+		Como o próprio nome diz, significa ter a aplicação em uma única página tendo o seu conteúdo é carregado dinamicamente.
+		Essa abordagem traz uma melhor experiência ao usuário, a medida que evita a troca ou refresh de página, e além disso evita a carga completa da página, o que pode também ser visto como uma melhora de desempenho.
+
+	\subsection{MVP}\label{mvp}
+		
+		MVP (Model-View-Presenter) possui um mecanismo derivado do padrão  MVC, diferenciando-se apenas no conceito.
+		Neste padrão, Presenter é a camada intermediária com o conhecimento das extremidades View e Model, tendo função semelhante ao Controller do padrão MVC.
+		A camada Presenter é encarregada de atualizar a camada View quando a camada Model sofre alterações e também encarregada de sincronizar a camada Model em relação a View.
+
+	\subsection{MVVM}
+
+		\hl{Pendente...}
+		MVVM (Model-View-ViewModel)
+
+		\hl{Pendente...}
+		Binding
+
+\begin{comment}	
+			
+			
+			Novas siglas surgem como MVP (Model-View-Presenter), MVVM (Model-View-View-Model) e MV* precisam ser compreendidas.
+			
+			SPA (Single-Page Applications)
+			Quais as desvantagens de utilizar MVC client-side?
+			
+			A principal dificuldade é a necessidade de aprender mais um (ou as vezes mais do que um) framework espec?fico para trabalhar exclusivamente com o front-end. A inclusão dessa parte da aplicação, apesar de facilitar a manutenção como comentado anteriormente, adiciona uma nova camada na aplicação, que precisa ser compreendida e respeitada pelo time.
+			Outro fator importante a ser considerado é o fato de que aplicações client-side necessitam da execução do c?digo javascript para gerarem o conte?do html e exibi-lo ao usu?rio. Apesar de praticamente n?o existirem usu?rios com javascript desativado em seus navegadores, os mecanismos de busca ainda tem dificuldade em indexar p?ginas com conte?do gerado dinamicamente no lado cliente. Se o seu projeto exige que o conte?do do seu aplicativo seja indexado por mecanismos de busca, talvez adotar uma arquitetura puramente mvc client-side n?o sejam a melhor opção.
+
+			Essa abordagem também é conhecida como \emph{single-page applications}. Significa que, como o próprio nome diz, a aplicação é apresentada em uma página ínica e o seu conteúdo é carregado dinamicamente. Entre as vantagens que esta abordagem traz estão:
+			
+			Interfaces ricas:
+			Melhor experiência para o usuário, a medida que a aplicação web funciona similar a uma aplicação desktop, além de proporcionar melhor performance por evitar a carga completa de páginas a cada interação.
+			
+			SPA / Ajax:
+			Falar sobre REST
+			Melhor desempenho na transferência de dados
+			Existe também um ganho considerável em velocidade na transmissão dos dados, pois ao invés de trafegar o conteúdo HTML (HyperText Markup Language) completo a cada interação do usuário, na arquitetura client-side o aplicativo completo é transferido na primeira requisição e as requisições seguintes são responsáveis por trafegar apenas os dados brutos entre o cliente e o servidor, normalmente no formato JSON. Este ganho é visível em aplicações móveis onde a velocidade na transfer?ncia dos dados normalmente é baixa.
+			
+			Setup / CDN
+			O aplicativo completo passa a ser fornecido através de arquivos html, css e javascript que podem ser comprimidos e distribu?dos através de CDN's com facilidade. Ap?s baixados pela primeira vez esses arquivos são mantidos em cache no browser do usu?rio. O servidor fica respons?vel apenas por fornecer uma API e enviar e receber os dados brutos no formato JSON. Dessa forma todo o processamento respons?vel por parsing dos dados e geração de templates fica no lado cliente e n?o mais no servidor, liberando recursos.
+
+
+			
+			Estes conceitos, aliados a evolução do JavaScript e a facilidade do formato JSON, fizeram surgir diversos \emph{frameworks} JavaScript para trabalhar com MVC \emph{client-side}. Ultimamente estão em destaque os \emph{frameworks} Backbone, Ember e o Angular.
+			
+			Bootstrap
+
+		É importante ressaltar que os \emph{frameworks} MVC \emph{client-side} não substituem os \emph{frameworks }MVC \emph{server-side}.
+		Na verdade os modelos se complementam, podem e devem atuar em conjunto.
+		O lado servidor, também chamado de \emph{back-end}, é responsável por fornecer uma API pela qual o lado cliente irá consumir através de um \emph{front-end} que pode tanto consumir dados para apresentação quanto consumir a API enviando dados por exemplo para serem armazenados em banco de dados.
+
+		Existem vantagens desta abordagem, uma vez que as camadas são bem isoladas, o desenvolvimento de cada lado da aplicação se torna independente.
+		Além disso, é possível existir mais de uma aplicação no modelo MVC \emph{client-side} fazendo uso da mesma API disponível na aplicação com modelo MVC \emph{server-side}.
+		Este é um cenário comum atualmente, onde existem versões diferentes de uma aplicação para \emph{desktop}, \emph{web} ou \emph{mobile}.
+		Uma desvantagem dessa abordagem poderia ser na questão de validação, que deve ser feita em ambos os lados, garantindo a integridade e qualidade dos sistemas.
+
+\end{comment}	
+
+\begin{comment}
+
+Atualmente este modelo de arquitetura vem sofrendo variações.
+Uma vez que o modelo (Model) e a apresentação (View) são essenciais para os sistemas, a variação ocorre no componente intermediário (Controller), dando  Sendo Model e View camadas essenciais, dando lugar a novas siglas surgindo e novas siglas como MVP, MVVM e MV* precisam ser compreendidas.
+
+A diferença básica é , pois Model e View são 
+
+A arquitetura MVC client-side se diferencia do modelo tradicional devido ao local onde são executados os componentes View e Controller oriundos da sigla MVC [SIGLA], que no caso são executados no lado cliente (client-side), mais especificamente no navegador (browser) e não no lado servidor (\emph{server-side}).
+
+Ainda assim, as linguagens de programação para a Internet consideradas "ricas", continuavam sendo executadas no lado servidor 
+
+Por outro lado a tecnologia segue em constante evolução, fazendo com que tenhamos que acompanhar as inovações tecnológicas, enfrentar novos paradigmas e nos adaptarmos a realidade. Isso vale para a arquitetura de \emph{software}.
+As páginas de Internet são codificadas em HTML (HyperText Markup Language), que é uma linguagem de marcação.
+Com o crescimento da Internet surgiram tecnologias para a geração de páginas dinâmicas e a arquitetura de aplicações web tinham linguagens de programação onde o conteúdo das páginas era gerado no lado do servidor (\emph{server-side}), como Java Servlets e JSP (Java Server Pages), montando a saída no formato de página HTML.
+A grande evolução no desenvolvimento \emph{web} veio com a recomendação do uso do padrão arquitetural MVC (Model-View-Controller) \cite{teste:1}.
+A arquitetura de \emph{sotfware} 1
+
+\end{comment}
+
+
+\section{Status quo}
+
+	A ideia desta seção é comentar a respeito de ferramentas existentes que oferecem soluções semelhantes ou que tenham relação com o presente artigo e o sistema de informação implementado.
+
+	\subsubsection{API olap4j}
+
+	O olap4j é uma API escrita em Java usada para o acesso a dados de cubos multidimensionais. Esta API é uma especialização das especificações 3 e 4 da API JDBC (Java Database Connectivity), portanto o olap4j é conhecido como o JDBC para OLAP.
+
+	\subsubsection{Mondrian}
+
+	Mondrian é um motor de análise OLAP escrito em Java.
+	Com ele é possível construir soluções de BI, utilizando seu motor para análises sobre cubo de dados multidimensionais.
+	É parte do pacote Pentaho BI, uma solução de BI bastante conhecida.
+
+	Ao trabalhar com bancos de dados relacionais, a linguagem padrão para consultas é a SQL (Structured Query Language).
+	O Mondrian realiza consultas sobre cubo de dados usando MDX (MultiDimensional eXpressions), que é considerado o SQL para OLAP.
+
+	\subsubsection{Saiku}
+
+	O Saiku é uma ferramenta para análise dinâmica de dados em cubos de dados multimensionais.
+	Com essa ferramenta é possível cruzar informações de dimensões e medidas e visualizar os resultados em tabelas e gráficos.
+	Tudo de forma fácil e prática, arrastando elementos (\emph{"drag and drop"}) para a análise no lugar desejado, como linha e coluna.
+	Ainda é possível aplicar filtros sobre a análise realizada.
+
+	\subsubsection{HyperCube}\label{sec:hypercube}
+	
+		HyperCube é uma biblioteca escrita em JavaScript que proporciona a criação de cubos de dados multi-dimensional, permite a aplicação de filtros e agregações, gerando dados estatíscos para fins de análise.
+		\emph{Open source} sob licença Apache 2.0, o HyperCube está publicado no GitHub, onde está descrito como um banco de dados OLAP leve escrito em JavaScript, útil para qualquer aplicação que precise extrair métricas para propósitos de gráficos dinâmicos.
+		
+		A estrutura de dados interpretada pelo HyperCube é um mapa no formato JSON, onde seus registros contém tempo, fatos e medidas como mostra a figura \ref{fig:ex-mapa-json}.
+		Esta estrutura de dados é convertida em um cubo de dados pesquisável, ou seja, apto a ser filtrado e consumido por funções matemáticas. A figura \ref{fig:cmd-js-cubo-hypercube} mostra o trecho de código JavaScript que realiza a geração do cubo de dados.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{hypercube-mapa.jpg}
+		\caption{Exemplo de um mapa de dados no formato JSON no formato compreendido pelo HyperCube}
+		\label{fig:ex-mapa-json}
+		\end{figure}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.8\textwidth]{hypercube-cubo.jpg}
+		\caption{Código JavaScript responsável pela transformação do mapa em um cubo de dados do HyperCube}
+		\label{fig:cmd-js-cubo-hypercube}
+		\end{figure}
+		
+		\subsubsection{HyperCube API}
+			
+			O HyperCube fornece algumas funções para trabalhar com o cubo de dados e obter as informações para análise. As mais relevantes são:
+			
+			\begin{description}
+			\item[count] Retorna o tamanho do cubo de dados, ou seja, a quantidade de objetos.
+			\item[getFactNames] Retorna uma lista com os fatos contidos no cubo de dados.
+			\item[getValues] Retorna uma lista com os valores distintos contidos em um determinado fato
+			\item[slice] Retorna um cubo de dados filtrado a partir de fatos
+			\item[sliceDates] Retorna um cubo de dados filtrado com dados entre duas datas
+			\item[dice] Retorna um cubo de dados resultante da exclusão de objetos a partir de fatos
+			\item[merge] Retorna a mescla um cubo de dados com outro cubo de dados
+			\item[sum] Retorna a soma das medidas no cubo
+			\item[avg] Retorna a média das medidas no cubo
+			\item[topSum] Retorna as maiores somas das medidas no cubo
+			\item[serialize] Transforma o cubo de dados no formato JSON
+			\item[deserialize] Cria o cubo de dados a partir de um objeto no formato JSON
+			\end{description}
+
+	\subsection{Frameworks client-side}
+
+	\hl{Pendente...}
+
+	\subsubsection{Ember.js}
+
+	\hl{Pendente...}
+
+	\subsubsection{Boilerplate}	
+
+	\hl{Pendente...}
+
+	\subsubsection{AngularJS}
+
+		AngularJS é um \emph{framework} MVC \emph{client-site} de bastante destaque criado pela da empresa Google.
+		Em seu site, está descrito como 
+		AngularJS é construído sobre a ideologia de que a programação declarativa deve ser usada para construção de interfaces e componentes, enquanto que a programação imperativa é excelente para escrever as regras de negócio \cite{col-front-end}.
+		
+		\hl{Pendente...} link com MVVM / MVW / MV*
+
+		\hl{Pendente...} Controladores
+
+		\hl{Pendente...} Modelos
+
+		\hl{Pendente...} Escopo
+
+		\hl{Pendente...} Diretivas
+
+		\hl{Pendente...} Filtros
+
+\section{Tomada de decisão}
+	
+	Esta seção aborda uma análise das ferramentas e \emph{frameworks} citados no Referencial teórico (seção \ref{referencial-teorico}) apresentando o motivo das escolhas realizadas de acordo com suas respectivas características e a avaliação das vantagens e desvantagens de cada item.
+
+\begin{comment}
+
+Para isso, utiliza o conceito SPA (Single-Page Application), o padrão de arquitetura MVC (Model-View-Controller) \emph{client-side} e bibliotecas JavaScript específicas para trabalhar com cubo de dados OLAP (On-Line Analytical Processing).
+
+
+
+\end{comment}
+
+\begin{comment}
+% Estrutura?
+% Métodos ágeis?
+\end{comment}
+
+
+\begin{comment}
+% BigData?
+% HTML5
+% JavaScript
+% UI / UX
+\end{comment}
+
+\begin{comment}
+
+	\subsection{Spark}
+
+		Spark é um micro web \emph{framework} desenvolvido que tem como característica viabilizar a criação de aplicações \emph{web} em Java com o mínimo de esforço possível, sem a necessidade de configurações em XML (eXtensible Markup Language).
+		
+		Inspirado no \emph{framework} Sinatra, o Spark é muito leve e tem como foco a facilidade do desenvolvimento web puramente Java de forma realmente simples e elegante, o que torna divertido para os desenvolvedores.
+		
+		O Spark é intrigante pelo fato de sua simplicidade \cite{francisco:14}. Está na versão 2.0.0, uma versão que foi desenvolvida incluindo adaptações para a versão 8 da linguagem Java, atualizando o \emph{framework} e usando recursos novos como a funcionalidade \textbf{Lambda}, deixando assim o \emph{framework} ainda mais elegante.
+		
+		Para exemplificar a simplicidade de um serviço REST usando o Spark, o próprio site do Spark apresenta o serviço HelloWorld, respondendo para o mapeamento "/hello" através do método HTTP GET como mostra a figura \ref{fig:3}. Para executar o serviço, ou seja, colocá-lo no ar ou disponibilizá-lo para consumo, basta executar a classe como um programa Java, pois o Spark possui o servidor de aplicação Jetty embutido.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{IMAGEM DO SERVIÇO HELLOWORLD}
+		\label{fig:3}
+		\end{figure}
+		
+		Com o serviço pronto, o acesso já pode ser realizado através de uma requisição HTTP. No exemplo apresentado no site, a URL do serviço é \textbf{http://localhost:4567/hello}, onde o \emph{host} é \textbf{localhost} (servidor local) e a porta é \textbf{4567}, a porta padrão do Spark que pode ser configurada. Realizando a chamada do serviço no navegador, obtemos o resultado apresentado na figura \ref{fig:4}.
+		
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{SERVIÇO EXECUTADO NO NAVEGADOR}
+		\label{fig:4}
+		\end{figure}
+	
+		Fora a facilidade do desenvolvimento com Spark, a performance também é um ponto positivo do framework, mesmo rodando sobre a JVM (Java Virtual Machine). Foi colocado a prova e comparado com outras tecnologias e o resultado foi útimo \cite{bijan:14}.
+		Se você quiser saber mais sobre este projeto, acesse o site http://www.sparkjava.com.
+
+\end{comment}
+
+
+\section{Descrição da solução}\label{statz}
+
+%	\subsection{Apresentação}
+
+	O sistema de informação implementado para o estudo de caso deste artigo chama-se Statz.
+	O Statz é uma aplicação \emph{web} no conceito de página única (\emph{single-page}) que serve para auxiliar a análise de dados estatísticos, manipulando dados em tempo real diretamente no \emph{front-end}.
+	Tem como característica possibilitar esta análise sobre cubos de dados multi-dimensionais (OLAP), portanto através de filtros e segmentações o Statz apresenta os dados para análise através de \emph{dashboards}.
+
+	A arquitetura do Statz é moderna, sendo desenvolvida no modelo MVC \emph{client-side}, mais precisamente o modelo MVVM com o uso do \emph{framework} AngularJS no \emph{front-end} da aplicação.
+	Uma vez gerado o cubo de dados, o Statz consegue executar as funções de estatística do HyperCube. É desta forma que ele extrai os indicadores que são apresentados nos \emph{dashboards} da aplicação, além da montagem dinâmica dos filtros que permitem a interação com o usuário.
+
+	Para servir de exemplo da análise de dados usando sistema Statz, foi escolhida uma base de dados de histórico de copas do mundo de futebol, fornecida pelo site da FIFA (Fédération Internationale de Football Association) como mostra a figura \ref{fig:site-fifa}.
+	O Statz trabalha com os dados no lado cliente, para isso precisa carregá-los como um objeto JavaScript do tipo \emph{array}, no formato JSON.
+
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=.5\textwidth]{1.jpg}
+	\caption{Estatísticas de copas do mundo disponibilizados no site da FIFA}
+	\label{fig:site-fifa}
+	\end{figure}
+	
+	Nesse momento, se optou por trabalhar com um universo de dados de exemplo fixo (\emph{hard-coded}), para não desviar o foco da solução.
+	Como o escopo do artigo é a manipulação dos dados diretamente no \emph{front-end} sobre o cubo de dados gerado pelo HyperCube, optou-se por utilizar os dados fixos.
+	Vale salientar que ss dados poderiam ser obtidos através de um DBMS (DataBase Management System), em português SGBD (Sistema de Gerenciamento de Banco de Dados), no tradicional banco de dados relacional ou em banco de dados NoSQL (Not Only SQL) que é um banco de dados não-relacional, mais flexível e de alta performance.
+	Em uma abordagem mais profissional, é interessante trabalhar com os dados de um DW (Data Warehouse), onde o modelo de dados é desnormalizado, normalmente os dados já foram transformados, agrupados e agregados por uma ferramenta de ETL (Extract, Transform, Load) deixando-os prontos para serem apresentados.
+
+	%Tem como principal característica a manipulação dos dados diretamente no lado cliente (\emph{front-end}) buscando melhor desempenho fazendo uso de recursos no lado cliente.
+	%Entende-se com isso o uso da memória pelo navegador e não tráfego de rede e consultas em banco de dados.
+
+	%Embora a principal característica do Statz esteja na sua ideia de arquitetura e mecanismo de análise, a \emph{interface} da aplicação é também um ponto importantíssimo pois é no \emph{front-end} que são montados os filtros de análise e \emph{dashboards} com dados e gráficos consolidados. Além disso, a forma com que os dados se mantém atualizados é baseada no paradigma MVVM do Angular, mantendo \textbf{Model} e \textbf{View} sincronizados, possibilitando manter dados atualizados em tempo real.
+		
+	%O \emph{design} da aplicação, bem como os gráficos, além de apresentar corretamente as informações devem mostrar os dados de forma clara e objetiva para possibilitar uma análise mais rápida e assertiva.	
+
+	%\subsection{Arquitetura}
+
+
+		%Mais \emph{client-side} e menos \emph{server-side} é a ideia do Statz.
+		%Onde o lado servidor só é necessário se a origem dos dados for dinâmica por exemplo tabelas de banco de dados que sofrem atualizações constantes.
+
+\begin{comment}
+		Diferente de aplicações cliente-servidor que trabalham basicamente com troca de mensagens via requisições HTTP e outras tecnologias, como o Node.JS, processam o JavaScript no lado servidor.
+		Basicamente, o Statz realiza apenas requisições para a inclusão das bibliotecas JavaScript utilizadas na página.
+		Para importar os dados e trabalhar as análises, busca um objeto JavaScript no formato JSON para a geração do cubo de dados multi-dimensional.
+		Os dados precisam ser carregados no JavaScript da página (\emph{client-side}), portanto devem ser extraídos de uma requisição adicional para um arquivo, caso os dados sejam estáticos, ou extraídos de uma requisição a um serviço REST que retornará os dados no 	formato JSON esperado.
+	
+		Com os dados no lado cliente, o Statz já pode montar o cubo de dados multi-dimensional e manipular os dados. 
+		Para isso, utiliza a da API (Application Programming Interface) JavaScript do HyperCube, que disponibiliza algumas funções permitindo que se extraia informações do cubo de dados, relacionada tanto a fatos quanto medidas.
+		É dessa forma que o Statz acessa os dados e consegue criar os possíveis filtros e análises iniciais para apresentar ao usuário de forma visual através de gráficos e \emph{dashboards}, interagindo com o usuário através da seleção de dados dos filtros na página.
+
+
+%\section{Integração com MVC server-side}
+
+		%O sistema Statz prova que é possível desenvolver uma aplicação \emph{web} para análise de dados diretamente no front-end através de um cubo de dados estático mapeado em JavaScript no formato JSON, porém nem sempre os dados disponibilizados para análise serão fixos. é interessante que o cubo de dados não seja estático.
+	
+		
+		Fato
+		
+		Medida
+		
+		HyperCube
+		
+		https://github.com/thesmart/js-hypercube
+		
+		Para usar o HyperCube, criamos o cubo de dados através de um objeto javacript no formato JSON, com uma estrutura predefinida contendo o momento do dado, fatos e medidas como é demonstrado na figura \ref{fig:fifa-dados-json} abaixo:
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Dados de copas do mundo obtidas junto a FIFA, no formato JSON}
+		\label{fig:fifa-dados-json}
+		\end{figure}
+		
+		O HyperCube deserializa o objeto e monta o cubo de dados para ser utilizado, ou seja, disponível para ser filtrado e calcular dados através de funções de agregação
+\end{comment}
+	
+	\subsection{Statz}
+
+		Enfim é apresentada agora a interface visual do sistema de informação Statz (figura \ref{fig:statz-interface}) onde é possível conhecer o logo, posicionado no cabeçalho à esquerda, e onde são apresentados os links para as visões distintas de análise, localizados na parte superior à direita, e que serão detalhadas a seguir.
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{statz-interface.png}
+		\caption{Tela de histórico do Statz com filtros e dashboards}
+		\label{fig:statz-interface}
+		\end{figure}
+
+	\subsubsection{Histórico}
+
+		A tela inicial do Statz é uma visão histórica das informações de jogos das copas do mundo, onde são apresentados os dados estatísticos calculados a partir do cubo de dados.
+		Nela constam as informações de vitórias, empates, derrotas, gols a favor e gols contra, além do número de jogos.
+
+		Estas informações são mapeadas no cubo de dados como \textbf{measures} (medidas).
+		Os filtros possíveis, mapeados como \textbf{facts} (fatos), são o ano, o país e o continente.
+		Através deles, é possível segmentar a análise sobre as informações do cubo de dados.
+
+		A figura \ref{fig:statz-historico} apresenta a tela de histórico com alguns filtros selecionados à esquerda (realçados em amarelo) e na área principal mostra os dados já filtrados considerando os respectivos filtros.
+		O resumo do filtro aplicado é: dados de copas do mundo do ano de 2006, do continente americano, mas apenas os Países Argentina e Brasil.
+
+		A API do Hypercube possibilita filtrar o cubo de dados com a função \textbf{slice} passando um mapa de filtros com os valores de cada "fato" como "ano", "pais" e "continente".
+		Inicialmente, como não há filtros selecionados, nenhuma função é aplicada, fazendo com que seja considerado todo o universo de dados contido no cubo de dados.
+		Se quisermos filtrar por mais de um ano, pais ou continente, o resultado será um cubo de dados vazio.
+		A explicação é simples: uma vez que os dados de histórico no detalhe sempre estão relacionados a algum ano específico, apenas de um país, que por sua vez pertence a um determinado continente.
+		
+		Portanto para agrupar os dados o Statz usa a função \textbf{dice}, passando também um mapa de filtros com valores de "fato".
+		Esta função gera um novo cubo de dados desconsiderando a presença de tais filtros.
+		Como esta tela já possui quais são os filtros selecionados, o Statz aplica a função \textbf{dice} nos valores não selecionados, obtendo o resultado esperado para demonstrar na tela.
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{statz-historico.png}
+		\caption{Tela de histórico do Statz apresentando dashboards com os filtros aplicados}
+		\label{fig:statz-historico}
+		\end{figure}
+				
+	\subsubsection{Ranking}
+
+		A tela de ranking é mais simples que a anterior. Como se pode ver na figura \ref{fig:statz-ranking}, a mesma não possui filtros e apenas mostra uma relação de Países ordenadas por pontuação, ou seja, em primeiro lugar o País de melhor particição em todas as copas do mundo considerando a pontuação de vitórias e empates, e assim por diante até os Países de pior participação.
+
+		O cubo de dados contém no detalhe o histórico de todos os Países em todas as participações. O que o Statz faz para criar o ranking é sumarizar os dados que dão origem a pontuação, dado calculado em tempo de execução considerando as medidas "vitorias" e "empates". 
+		Vale ressaltar que a pontuação foi contabilizada considerando 3 (três) pontos por vitória e 1 (um) ponto por empate, ignorando o fato de a FIFA ter alterado a regra pontuação de vitória ao longo do tempo.
+
+		Com a pontuação calculada um novo cubo de dados é gerado pelo Statz tendo em sua estrutura o País como fato e a pontuação como medida, o que resulta no mapeamento da pontuação de cada País.
+		Aplicando a função \textbf{topSum} da API do Hypercube, passando o fato "pais" e a medida "pontos", temos os Países ordenados pela pontuação gerando assim o ranking apresentado na tela.
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{1.jpg}
+		\caption{Tela de ranking do Statz}
+		\label{fig:statz-ranking}
+		\end{figure}
+
+	\subsubsection{País}
+
+		Na tela de País é possível realizar uma análise focada em um determinado País, sem a interferência de outros dados relacionados, como mostra a figura \ref{fig:statz-pais}.
+		Isso possibilita uma comparação entre um País e outro, sobre a participação dos mesmos nas copas do mundo.
+
+		O Statz nesta tela aguarda o usuário realizar a escolha do País, para filtrar o cubo de dados e apresentar as informações do País.
+		Mediante a seleção do País, o sistema aplica a função \textbf{slice} da API do Hypercube, passando um mapa de filtros. No caso, apenas o fato "pais" é passado como filtro. Isso faz com que seja gerado um novo cubo de dados, contendo apenas os dados do País selecionado.
+
+		Com os dados do País, o sistema apresenta na área principal os dados do País para que seja realizada a análise. Alterando o filtro para outro País, o processo se repete mostrando novos dados, possibilitando a comparação entre Países.
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=1\textwidth]{1.jpg}
+		\caption{Tela para análise especifica de um País}
+		\label{fig:statz-pais}
+		\end{figure}
+
+\begin{comment}
+	\subsubsection{Confronto direto}
+
+		\hl{Pendente...} 
+		Filtros
+
+		\hl{Pendente...} 
+		Dados
+
+		\hl{Pendente...}
+		Tela \ref{fig:statz-confronto-direto}
+
+		\begin{figure}[ht]
+		\centering
+		\includegraphics[width=.5\textwidth]{1.jpg}
+		\caption{Tela do Statz para análise de um confronto entre Países}
+		\label{fig:statz-confronto-direto}
+		\end{figure}
+\end{comment}
+		
+\begin{comment}
+		Configurar, CDN (Content Delivery Network)
+		
+		https://angularjs.org/
+		
+		Para este artigo, o Angular foi utilizado via CDN (Content Delivery Network), pelas vantagens de cache, latência e paralelismo. 
+
+		Foram criadas quatro páginas com análises distintas. São elas:
+
+		\subsubsection{Análise de dados históricos}
+		
+		.
+
+		\subsubsection{R}
+		
+		.
+
+		\subsubsection{Análise de dados histórica}
+		
+		.		
+\end{comment}
+
+
+\section{Próximos passos}
+
+	\hl{Pendente...}
+	CouchDB
+
+	\hl{Pendente...} 
+	Drill down
+
+	\hl{Pendente...} 
+	Login e controle de acesso
+
+	\hl{Pendente...} 
+	WebSocket
+
+	\hl{Pendente...} 
+	Filas Rabbit
+
+	\hl{Pendente...} 
+	Hazelcast
+
+	\hl{Pendente...} 
+	NoSQL
+	
+	\hl{Pendente...} 
+	MongoDB
+
+\section{Considerações Finais}
+
+	\hl{Pendente...} 
+
+\begin{comment}
+
+	O objetivo deste trabalho era propor um sistema de informação especialista em estatística com algumas características específicas. Entre elas está a centralização do mecanismo de manipulação de dados e a análise dos mesmos diretamente na interface, trazendo consigo uma abordagem diferente no que diz respeito a filtros e segmentações em cubo de dados OLAP, e o uso de ferramentas e tecnologias modernas em sua arquitetura beneficiando e enriquecendo o seu desenvolvimento.
+	
+	Acredito ter sido feliz na escolha do tema, tentando trazer algo inovador e agregando novos conhecimentos ao currículo. A criação do Statz foi uma experiência muito positiva, seu desenvolvimento trouxe a oportunidade de aprofundar estudos e realizar provas de conceito das ferramentas e tecnologias escolhidas, resultando ainda em uma excelente ferramenta de análise de dados estatísticos.
+	
+	Tendo em vista o objetivo alcançado, a ideia é aproveitar o Statz em situações mais profissionais, onde a análise dos dados seja útil na tomada de decisões servindo como ferramenta essencial para competitividade no mercado.
+	
+	Em relação aos próximos passos do Statz, pretende-se evoluir ainda mais o sistema no front-end, considerando a atualização do cubo de dados em tempo real através do recurso WebSocket presente no HTML 5 e suportado por navegadores modernos. Outro ponto importante a evoluir é o uso de banco de dados na carga do cubo de dados para a interface. Não foi implementado neste momento, mas é interessante que seja possível, de preferência um banco de dados não-relacional.
+	
+	Mobile
+	
+	Recomendo a utilização do Statz no meio corporativo. Colocando-o em ambiente de produção será importante para sua evoluição, seja aprimorando a arquitetura ou na adaptação a novos modelos de negócio.
+\end{comment}
+
+\bibliographystyle{sbc}
+\bibliography{artigo-rafael-oliveira}
+
+\begin{comment}
+\begin{lstlisting}[language=java]
+class HelloWorldApp {
+    public static void main(String[] args) {
+        System.out.println("Hello World!"); // Display the string.
+        for (int i = 0; i < 100; ++i) {
+            System.out.println(i);
+        }
+    }
+}
+\end{lstlisting}
+\end{comment}
+
+\end{document}

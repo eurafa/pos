@@ -1,0 +1,65 @@
+Oi Rafael!
+
+Cara, por aqui tudo bem, e contigo?
+
+Sinto pelo atraso -- as coisas andam bem corridas no trabalho e em casa.
+
+Sobre o texto, li ele e:
+
+1. No geral está bom;
+
+2. Não sei o que houve, mas as imagens não vieram;
+
+3. Estou preocupado com a quantidade de texto: já são 11 páginas e ainda muitas áreas em "Pendente". Minha sugestão:
+
+  - Como já estás colocando a mão na massa, sugiro focar o texto que descreve a tua solução (de maneira sucinta)
+  - Isso vai ajudar a determinar o que é absolutamente mandatório no referencial teórico
+  - Na minha cabeça, a ordem adequada seria:
+
+	    a. Referencial teórico 
+		(puramente teórico, então falaria de 
+			server/client-side, 
+			de REST, 
+			de OLAP, 
+			etc, 
+		de maneira sucinta, 
+		com mais foco na "carne", 
+			que são os conceitos de BI)
+
+	    b. Status quo -- que ferramentas por aí oferecem funcionalidade semelhante
+
+	    c. Tomada de decisão com relação à stack e à arquitetura. Aqui falas das bibliotecas escolhidas e justificas a escolha (porque Angular.js e não React.js? Francamente, não sei se precisas falar do lado server side -- ver meu comentário mais adiante)
+	    
+	    d. Descrição da solução. 
+
+Sobre a solução (disclaimer: ainda não vi os fontes):
+
+* No teu entender, a solução é só o lado client-side (minha assumption original) ou também o server-side? Se for só o client side, não precisas gastar muito tempo falando de Spark, etc, já que não é teu foco. Não precisas nem mesmo justificar o uso de dados fixos para alimentar a solução...
+* Que bibliotecas JS estás usando na tua solução? 
+* O que estás usando na tua stack de desenvolvimento? Bower? 
+* Que tal já escrever o código e APIs em inglês?
+* Que bibliotecas JS são "concorrentes" do Mozaic?
+* Cara, sabes que esse nome tem um antecessor, da web, né? O NCSA Mosaic foi a base para todos os browsers que usamos nos dias de hoje...
+
+
+
+
+
+
+Opa!
+
+Entendo a tua situação, a minha não é muito diferente :). Ainda troquei de emprego nesse meio tempo e estou tendo que estudar bastante coisa.
+Tu tem ideia do prazo que temos? Acha que é possível conseguir mais tempo para entregar?
+
+Vou dar uma revisada em tudo com as tuas considerações.
+As imagens não estavam ainda na versão que te mandei na época.
+Em relação a ordem e estrutura, vou readequar as seções do artigo seguindo a recomendação, acrescentando a seção "Próximos passos"
+
+Da solução em si, a solução é client-side mesmo.
+As bibliotecas JS são só jQuery e o hypercube-js mesmo.
+Vou repensar no nome e dar uma reduzida sobre a origem dos dados.
+
+Aguarde uma nova versão.
+
+Muito obrigado!
+Abraço!

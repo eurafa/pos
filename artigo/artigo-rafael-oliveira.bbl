@@ -12,20 +12,10 @@ Flanagan, D. (2011).
 \newblock {\em JavaScript: The Definitive Guide}.
 \newblock O'Reilly Media, 6th edition.
 
-\bibitem[Francisco 2014]{francisco:14}
-Francisco, G. (2014).
-\newblock Construindo aplicações rest utilizando spark 2.0.
-\newblock {\em We have science}.
-
 \bibitem[Osmani 2012]{lng-js-dp}
 Osmani, A. (2012).
 \newblock {\em Learning JavaScript Design Patterns}.
 \newblock O'Reilly Media.
-
-\bibitem[Rahnema 2014]{bijan:14}
-Rahnema, B. (2014).
-\newblock Express vs flask vs go vs sparkjava.
-\newblock {\em Medium}.
 
 \bibitem[Schmitz and Lira 2013]{ang-prat}
 Schmitz, D. and Lira, D. (2013).
@@ -38,5 +28,11 @@ Silveira, P., Silveira, G., Lopes, S., Moreira, G., Steppat, N., and Kung, F.
 \newblock {\em Introdução à Arquitetura e Design de Software: Uma visão sobre a
   plataforma Java}.
 \newblock Elsevier.
+
+\bibitem[Turban et~al. 2009]{bi-enfoque}
+Turban, E., Sharda, R., Aronson, J.~E., and King, D. (2009).
+\newblock {\em Business Intelligence: Um enfoque gerencial para a inteligência
+  do negócio}.
+\newblock O'Reilly Media.
 
 \end{thebibliography}

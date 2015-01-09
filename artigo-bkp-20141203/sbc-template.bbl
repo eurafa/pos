@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem[Francisco 2014]{francisco:14}
+Francisco, Gabriel (2014).
+\newblock Construindo aplicações REST utilizando Spark 2.0
+\newblock http://wehavescience.com/2014/07/06/construindo-aplicacoes-rest-utilizando-spark-2-0/
+
+\bibitem[Boulic and Renault 1991]{boulic:91}
+Boulic, R. and Renault, O. (1991).
+\newblock 3d hierarchies for animation.
+\newblock In Magnenat-Thalmann, N. and Thalmann, D., editors, {\em New Trends
+  in Animation and Visualization}. John Wiley {\&} Sons ltd.
+
+\bibitem[FR 2014]{knuth:84}
+Knuth, D.~E. (1984).
+\newblock {\em The {\TeX} Book}.
+\newblock Addison-Wesley, 15th edition.
+
+\bibitem[S and J 1999]{smith:99}
+Smith, A. and Jones, B. (1999).
+\newblock On the complexity of computing.
+\newblock In Smith-Jones, A.~B., editor, {\em Advances in Computer Science},
+  pages 555--566. Publishing Press.
+
+\end{thebibliography}

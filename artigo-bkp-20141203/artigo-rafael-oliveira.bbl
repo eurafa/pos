@@ -1,0 +1,42 @@
+\begin{thebibliography}{}
+
+\bibitem[Filho et~al. 2014]{col-front-end}
+Filho, A., Luna, B.~D., Gondim, C., Marques, D., Eis, D., Shiota, E., Keppelen,
+  G., Real, L.~C., Gomes, J., Ferraz, R., and Lopes, S. (2014).
+\newblock {\em Coletânea Front-end: Uma antologia da comunidade front-end
+  brasileira}.
+\newblock Casa do Código.
+
+\bibitem[Flanagan 2011]{js-guide}
+Flanagan, D. (2011).
+\newblock {\em JavaScript: The Definitive Guide}.
+\newblock O'Reilly Media, 6th edition.
+
+\bibitem[Francisco 2014]{francisco:14}
+Francisco, G. (2014).
+\newblock Construindo aplicações rest utilizando spark 2.0.
+\newblock {\em We have science}.
+
+\bibitem[Osmani 2012]{lng-js-dp}
+Osmani, A. (2012).
+\newblock {\em Learning JavaScript Design Patterns}.
+\newblock O'Reilly Media.
+
+\bibitem[Rahnema 2014]{bijan:14}
+Rahnema, B. (2014).
+\newblock Express vs flask vs go vs sparkjava.
+\newblock {\em Medium}.
+
+\bibitem[Schmitz and Lira 2013]{ang-prat}
+Schmitz, D. and Lira, D. (2013).
+\newblock {\em AngularJS na prática}.
+\newblock Leanpub.
+
+\bibitem[Silveira et~al. 2012]{intro-arq-des-sw}
+Silveira, P., Silveira, G., Lopes, S., Moreira, G., Steppat, N., and Kung, F.
+  (2012).
+\newblock {\em Introdução à Arquitetura e Design de Software: Uma visão sobre a
+  plataforma Java}.
+\newblock Elsevier.
+
+\end{thebibliography}
