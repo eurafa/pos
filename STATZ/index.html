@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<div class="wrapper flexGRID" ng-controller="StatzController" ng-init="dashboard = 'Histórico';">
+	<div class="wrapper flexGRID" ng-controller="StatzController" ng-init="dashboard = 'País';">
 		<div class="row">
 			<div class="col_12 last">
 				<div style="float:right">
@@ -31,8 +31,6 @@
 					<a href="" ng-click="dashboard = 'Ranking'">Ranking</a>
 					
 					<a href="" ng-click="dashboard = 'País'">País</a>
-					
-					<a href="" ng-click="dashboard = 'Confronto'">Confronto</a>
 				</div>
 			</div>
 		</div>
@@ -140,6 +138,8 @@
 		<div class="row" ng-show="dashboard == 'País'" ng-controller="StatzPaisController">
 			<div class="col_3">
 				<div id="filtro-pais">
+					<h2>Filtros</h2>
+					<hr/>
 					<select ng-model="paisSelecionado">
 						<option value="">Selecione o País</option>
 						<option ng-repeat="p in paises" value="{{p}}">{{p}}</option>
@@ -147,39 +147,81 @@
 				</div>
 			</div>
 			<div id="dashboard-pais" class="col_9 last">
-				<div class="wrapper flexGRID" ng-show="paisSelecionado">
+				<h2>Dashboards</h2>
+				<hr/>
+				<div class="wrapper zero" ng-show="paisSelecionado">
 					<div class="row">
-						<div class="col_4" tit="Participação em copas" ind="gauge" val="d.count()" max="copas.getValues('ano').length">
-							Campeão
+						<div class="col_6 zero" tit="Campeão">
+							<fieldset>
+								<legend align="center">Campeão</legend>
+								<div class="text-center">
+									<div class="value">
+										<img src="img/champion.png" width="48px"/>
+										<img src="img/champion.png" width="48px"/>
+										<img src="img/champion.png" width="48px"/>
+										<img src="img/champion.png" width="48px"/>
+										<img src="img/champion.png" width="48px"/>
+									</div>
+								</div>	
+							</fieldset>
 						</div>
-						<div class="col_2" tit="Participação em copas" ind="gauge" val="d.count()" max="copas.getValues('ano').length">
-							Participação em copas: 
-							{{cuboPais.count()}}
+						<div class="col_3 zero" tit="Participação em copas" ind="gauge" val="d.count()" max="copas.getValues('ano').length">
+							<fieldset>
+								<legend align="center">Participação</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.count()}}</div>
+								</div>	
+							</fieldset>
 						</div>
-						<div class="col_2">
-							Jogos: {{cuboPais.sum()['jogos']}}
-						</div>
-						<div class="col_2">
-							Vitórias: {{cuboPais.sum()['vitorias']}}
-						</div>
-						<div class="col_2">
-							Empates: {{cuboPais.sum()['empates']}}
-						</div>
-						<div class="col_2 last">
-							Derrotas: {{cuboPais.sum()['derrotas']}}
+						<div class="col_3 zero last">
+							<fieldset>
+								<legend align="center">Jogos</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.sum()['jogos']}}</div>
+								</div>	
+							</fieldset>
 						</div>
 					</div>
-				</div>
-				<div class="wrapper flexGRID" ng-show="paisSelecionado">
 					<div class="row">
-						<div class="col_2">
-							Gols a favor: {{cuboPais.sum()['gols_a_favor']}}
+						<div class="col_2 zero">
+							<fieldset>
+								<legend align="center">Vitórias</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.sum()['vitorias']}}</div>
+								</div>	
+							</fieldset>
 						</div>
-						<div class="col_2">
-							Gols contra: {{cuboPais.sum()['gols_contra']}}
+						<div class="col_2 zero">
+							<fieldset>
+								<legend align="center">Empates</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.sum()['empates']}}</div>
+								</div>	
+							</fieldset>
 						</div>
-						<div class="col_8 last">
-							Gráfico vitórias em cada copa
+						<div class="col_2 zero">
+							<fieldset>
+								<legend align="center">Derrotas</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.sum()['derrotas']}}</div>
+								</div>	
+							</fieldset>
+						</div>
+						<div class="col_3 zero">
+							<fieldset>
+								<legend align="center">Gols a favor</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.sum()['gols_a_favor']}}</div>
+								</div>	
+							</fieldset>
+						</div>
+						<div class="col_3 zero last">
+							<fieldset>
+								<legend align="center">Gols contra</legend>
+								<div class="text-center">
+									<div class="value">{{cuboPais.sum()['gols_contra']}}</div>
+								</div>	
+							</fieldset>
 						</div>
 					</div>
 				</div>

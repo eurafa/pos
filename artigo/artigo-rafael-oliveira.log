@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.3)  9 JAN 2015 11:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.3)  24 AUG 2015 23:00
 entering extended mode
 **C:/dev/uniritter/pos/artigo/artigo-rafael-oliveira.tex
 (C:/dev/uniritter/pos/artigo/artigo-rafael-oliveira.tex
@@ -297,121 +297,139 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 [1
 
 {C:/Users/Eu/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<1.jpg, id=11, 351.3125pt x 150.5625pt>
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 103.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 104.
+<cubo-dados-multidimensional.jpg, id=11, 642.4pt x 465.74pt>
+File: cubo-dados-multidimensional.jpg Graphic file (type jpg)
+
+<use cubo-dados-multidimensional.jpg>
+Package pdftex.def Info: cubo-dados-multidimensional.jpg used on input line 104
+.
+(pdftex.def)             Requested size: 170.71393pt x 123.76874pt.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 105.
 
 
 (C:\dev\tools\MiKTeX\tex\latex\psnfss\ot1phv.fd
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 104.
- [2 <C:/dev/uniritter/pos/artigo/1.jpg>]
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 115.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [3]
-Underfull \hbox (badness 6125) in paragraph at lines 153--155
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 105.
+
+<modelo-multidimensional-estrela.jpg, id=12, 741.77126pt x 485.815pt>
+File: modelo-multidimensional-estrela.jpg Graphic file (type jpg)
+
+<use modelo-multidimensional-estrela.jpg>
+Package pdftex.def Info: modelo-multidimensional-estrela.jpg used on input line
+ 116.
+(pdftex.def)             Requested size: 170.71393pt x 111.8018pt.
+ [2] [3 <C:/dev/uniritter/pos/artigo/cubo-dados-multidimensional.jpg> <C:/dev/u
+niritter/pos/artigo/modelo-multidimensional-estrela.jpg>]
+Underfull \hbox (badness 6125) in paragraph at lines 154--156
 \OT1/ptm/m/it/12 Drill down []\OT1/ptm/m/n/12 e a opera[][]ao uti-li-zada para 
 de-ta-lhar mais o dado. Se-gundo
  []
 
-[4] <javascript-inclusao-script.jpg, id=22, 395.4775pt x 249.93375pt>
-File: javascript-inclusao-script.jpg Graphic file (type jpg)
+[4] <javaScript-inclusao-script.jpg, id=23, 395.4775pt x 249.93375pt>
+File: javaScript-inclusao-script.jpg Graphic file (type jpg)
 
-<use javascript-inclusao-script.jpg>
-Package pdftex.def Info: javascript-inclusao-script.jpg used on input line 186.
+<use javaScript-inclusao-script.jpg>
+Package pdftex.def Info: javaScript-inclusao-script.jpg used on input line 187.
 
-(pdftex.def)             Requested size: 298.75264pt x 188.80751pt.
+(pdftex.def)             Requested size: 213.39568pt x 134.86305pt.
 
-<json-formato.jpg, id=23, 220.825pt x 286.06876pt>
+<json-formato.jpg, id=24, 220.825pt x 286.06876pt>
 File: json-formato.jpg Graphic file (type jpg)
  <use json-formato.jpg>
-Package pdftex.def Info: json-formato.jpg used on input line 198.
-(pdftex.def)             Requested size: 170.71393pt x 221.1641pt.
+Package pdftex.def Info: json-formato.jpg used on input line 199.
+(pdftex.def)             Requested size: 128.0387pt x 165.87634pt.
 
-<json-comparativo-xml.jpg, id=24, 589.20125pt x 357.335pt>
+<json-comparativo-xml.jpg, id=25, 589.20125pt x 357.335pt>
 File: json-comparativo-xml.jpg Graphic file (type jpg)
 
 <use json-comparativo-xml.jpg>
-Package pdftex.def Info: json-comparativo-xml.jpg used on input line 208.
-(pdftex.def)             Requested size: 426.79135pt x 258.84041pt.
- [5 <C:/dev/uniritter/pos/artigo/javascript-inclusao-script.jpg>]
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 225.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
-
-Underfull \hbox (badness 2626) in paragraph at lines 249--252
+Package pdftex.def Info: json-comparativo-xml.jpg used on input line 209.
+(pdftex.def)             Requested size: 341.43437pt x 207.07451pt.
+ [5 <C:/dev/uniritter/pos/artigo/javaScript-inclusao-script.jpg> <C:/dev/unirit
+ter/pos/artigo/json-formato.jpg>]
+<mvc.png, id=30, 501.875pt x 401.5pt>
+File: mvc.png Graphic file (type png)
+ <use mvc.png>
+Package pdftex.def Info: mvc.png used on input line 226.
+(pdftex.def)             Requested size: 213.39568pt x 170.71794pt.
+ [6 <C:/dev/uniritter/pos/artigo/json-comparativo-xml.jpg> <C:/dev/uniritter/po
+s/artigo/mvc.png>]
+Underfull \hbox (badness 2626) in paragraph at lines 250--253
 \OT1/ptm/m/n/12 MVP (Model-View-Presenter) pos-sui um me-ca-nismo de-ri-vado do
  padr[]ao MVC,
  []
 
-[6 <C:/dev/uniritter/pos/artigo/json-formato.jpg>] [7 <C:/dev/uniritter/pos/art
-igo/json-comparativo-xml.jpg>]
-<hypercube-mapa.jpg, id=36, 547.04375pt x 365.365pt>
+[7] <hypercube-mapa.jpg, id=39, 547.04375pt x 365.365pt>
 File: hypercube-mapa.jpg Graphic file (type jpg)
- <use hypercube-mapa.jpg>
-Package pdftex.def Info: hypercube-mapa.jpg used on input line 295.
-(pdftex.def)             Requested size: 426.79135pt x 285.05045pt.
 
-<hypercube-cubo.jpg, id=37, 422.57875pt x 29.10875pt>
+<use hypercube-mapa.jpg>
+Package pdftex.def Info: hypercube-mapa.jpg used on input line 296.
+(pdftex.def)             Requested size: 341.43437pt x 228.04036pt.
+ <hypercube-cubo.jpg, id=40, 422.57875pt x 29.10875pt>
 File: hypercube-cubo.jpg Graphic file (type jpg)
- <use hypercube-cubo.jpg>
-Package pdftex.def Info: hypercube-cubo.jpg used on input line 302.
-(pdftex.def)             Requested size: 341.43437pt x 23.51976pt.
 
-[8] [9 <C:/dev/uniritter/pos/artigo/hypercube-mapa.jpg> <C:/dev/uniritter/pos/a
-rtigo/hypercube-cubo.jpg>] [10]
-<statz-interface.png, id=47, 1702.36pt x 810.02625pt>
+<use hypercube-cubo.jpg>
+Package pdftex.def Info: hypercube-cubo.jpg used on input line 303.
+(pdftex.def)             Requested size: 256.07741pt x 17.63992pt.
+ [8] [9 <C:/dev/uniritter/pos/artigo/hypercube-mapa.jpg> <C:/dev/uniritter/pos/
+artigo/hypercube-cubo.jpg>] [10]
+<statz-interface.png, id=50, 1524.69624pt x 801.99625pt>
 File: statz-interface.png Graphic file (type png)
 
 <use statz-interface.png>
-Package pdftex.def Info: statz-interface.png used on input line 394.
-(pdftex.def)             Requested size: 426.79135pt x 203.07462pt.
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 408.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [11]
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 423.
-(pdftex.def)             Requested size: 213.39568pt x 91.45702pt.
- [12 <C:/dev/uniritter/pos/artigo/statz-interface.png>] Excluding 'comment' com
-ment.
-Excluding 'comment' comment. [13]
-<statz-historico.png, id=60, 1702.36pt x 810.02625pt>
+Package pdftex.def Info: statz-interface.png used on input line 401.
+(pdftex.def)             Requested size: 426.79135pt x 224.484pt.
+ [11] <fifa-2010.png, id=55, 640.794pt x 239.6955pt>
+File: fifa-2010.png Graphic file (type png)
+
+<use fifa-2010.png>
+Package pdftex.def Info: fifa-2010.png used on input line 415.
+(pdftex.def)             Requested size: 426.79135pt x 159.64786pt.
+ [12 <C:/dev/uniritter/pos/artigo/statz-interface.png> <C:/dev/uniritter/pos/ar
+tigo/fifa-2010.png>]
+<json-participacoes-copas.png, id=60, 469.755pt x 339.669pt>
+File: json-participacoes-copas.png Graphic file (type png)
+
+<use json-participacoes-copas.png>
+Package pdftex.def Info: json-participacoes-copas.png used on input line 430.
+(pdftex.def)             Requested size: 426.79135pt x 308.60172pt.
+ Excluding 'comment' comment.
+Excluding 'comment' comment.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13 <C:/dev/uniritter/pos/artigo/json-participacoes-copas.png>] [14]
+<statz-historico.png, id=68, 1524.69624pt x 801.99625pt>
 File: statz-historico.png Graphic file (type png)
 
 <use statz-historico.png>
-Package pdftex.def Info: statz-historico.png used on input line 504.
-(pdftex.def)             Requested size: 426.79135pt x 203.07462pt.
- [14 <C:/dev/uniritter/pos/artigo/statz-historico.png>]
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 521.
-(pdftex.def)             Requested size: 426.79135pt x 182.92552pt.
-File: 1.jpg Graphic file (type jpg)
- <use 1.jpg>
-Package pdftex.def Info: 1.jpg used on input line 538.
-(pdftex.def)             Requested size: 426.79135pt x 182.92552pt.
- [15] Excluding 'comment' comment.
-(C:\dev\uniritter\pos\artigo\artigo-rafael-oliveira.bbl) [16]
+Package pdftex.def Info: statz-historico.png used on input line 511.
+(pdftex.def)             Requested size: 341.43437pt x 179.58475pt.
+ <statz-ranking.png, id=69, 1541.76pt x 732.7375pt>
+File: statz-ranking.png Graphic file (type png)
+
+<use statz-ranking.png>
+Package pdftex.def Info: statz-ranking.png used on input line 529.
+(pdftex.def)             Requested size: 341.43437pt x 162.26491pt.
+ [15 <C:/dev/uniritter/pos/artigo/statz-historico.png>]
+<statz-pais.png, id=74, 1541.76pt x 732.7375pt>
+File: statz-pais.png Graphic file (type png)
+ <use statz-pais.png>
+Package pdftex.def Info: statz-pais.png used on input line 548.
+(pdftex.def)             Requested size: 341.43437pt x 162.26491pt.
+ [16 <C:/dev/uniritter/pos/artigo/statz-ranking.png> <C:/dev/uniritter/pos/arti
+go/statz-pais.png>] [17] (C:\dev\uniritter\pos\artigo\artigo-rafael-oliveira.bb
+l) [18]
 (C:\dev\uniritter\pos\artigo\artigo-rafael-oliveira.aux) ) 
 Here is how much of TeX's memory you used:
- 4363 strings out of 493921
- 59664 string characters out of 3150499
- 130734 words of memory out of 3000000
- 7588 multiletter control sequences out of 15000+200000
+ 4395 strings out of 493921
+ 60501 string characters out of 3150499
+ 130743 words of memory out of 3000000
+ 7614 multiletter control sequences out of 15000+200000
  21346 words of font info for 45 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 30i,10n,32p,546b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,10n,32p,555b,312s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/dev/tools/MiKTeX/
 fonts/enc/dvips/fontname/8r.enc}<C:/dev/tools/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmmi12.pfb><C:/dev/tools/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C
@@ -420,9 +438,9 @@ s/type1/urw/helvetic/uhvb8a.pfb><C:/dev/tools/MiKTeX/fonts/type1/urw/times/utmb
 8a.pfb><C:/dev/tools/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/dev/tools/MiK
 TeX/fonts/type1/urw/times/utmr8a.pfb><C:/dev/tools/MiKTeX/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on artigo-rafael-oliveira.pdf (16 pages, 705913 bytes).
+Output written on artigo-rafael-oliveira.pdf (18 pages, 1135746 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 113 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

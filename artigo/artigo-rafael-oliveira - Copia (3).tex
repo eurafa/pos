@@ -51,7 +51,7 @@
 
 \begin{abstract}
 
-	The present paper reports a case study of the implementation of an information system for data analysis, aiming to demonstrate the analysis of multidimensional data cubes on the client side.
+	The present paper reports a case study of the implementation of an information system for data analysis, aiming to demonstrate the analysis of multi-dimensional data cubes on the client side.
 	This case study also includes an evaluation of the proposed architecture for the development of information system, focused on the front end, involves the concept SPA (Single-Page Application) and the MVC (Model-View-Controller) client-side.
 	In Article scope are detailed in the characteristics and differences of this information and its system architecture, as well as the form of manipulation of data cube.
 
@@ -59,7 +59,7 @@
      
 \begin{resumo} 
 
-	O presente trabalho relata um estudo de caso referente a implementação de um sistema de informação para análise de dados, tendo como objetivo demonstrar a realização de análises sobre cubos de dados multidimensionais no lado cliente.
+	O presente trabalho relata um estudo de caso referente a implementação de um sistema de informação para análise de dados, tendo como objetivo demonstrar a realização de análises sobre cubos de dados multi-dimensionais no lado cliente.
 	Este estudo de caso também abrange uma avaliação da arquitetura proposta para o desenvolvimento deste sistema de informação que, focado no front-end, envolve o conceito SPA (Single-Page Application) e o modelo MVC (Model-View-Controller) client-side.
 	No escopo do artigo serão detalhadas das características e diferenciais deste sistema de informação e sua arquitetura, bem como a forma de manipulação sobre cubo de dados.
 	
@@ -89,11 +89,10 @@
 	\subsection{OLAP}
 	
 		Quando falamos de análise de dados, um leque de opções e níveis de análise podem aparecer.
-		Em um contexto mais analítico e interativo, voltado para tomada de decisão rápida sobre grandes volumes de dados, o cenário se estreita a análises sobre cubo de dados multidimensional.
+		Em um contexto mais analítico e interativo, voltado para tomada de decisão rápida sobre grandes volumes de dados, o cenário se estreita a análises sobre cubo de dados multi-dimensional.
 
 		Nesse sentido, entra a tecnologia OLAP (On-Line Analytical Processing) que significa processamento analítico online.
-		OLAP nada mais é do que uma tecnologia de banco de dados otimizado na forma de cubo de dados multidimensional, diferente de um banco de dados relacional baseado em linhas e colunas.
-		Os dados são visualizados sob diversos ângulos chamados de dimensões, onde uma dimensão que sempre existe é o tempo.
+		OLAP nada mais é do que uma tecnologia de banco de dados otimizado na forma de cubo de dados multidimensional, diferente de um banco de dados relacional baseado em linhas e coluas.
 
 	\subsection{Conceitos de cubo de dados}
 
@@ -101,7 +100,7 @@
 
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.4\textwidth]{cubo-dados-multidimensional.jpg}
+		\includegraphics[width=.5\textwidth]{1.jpg}
 		\caption{Representação de um cubo de dados multidimensional}
 		\label{fig:cubo-dados}
 		\end{figure}
@@ -113,14 +112,14 @@
 
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.4\textwidth]{modelo-multidimensional-estrela.jpg}
+		\includegraphics[width=.5\textwidth]{1.jpg}
 		\caption{Exemplo de um modelo de dados multidimensional no formato de estrela}
 		\label{fig:modelo-estrela}
 		\end{figure}
 
-		É importante destacar alguns conceitos de cubo de dados.
-		Entre eles destaco fato, medida e dimensão.
-		Fato representa uma coleção de dados relacionados que podem servir a análise.
+		\subsubsection{Fato}
+
+			Representa uma coleção de dados relacionados que podem servir a análise.
 			Uma tabela fato possui os dados agregados baseados em uma entidade e seus relacionamentos.
 
 		\subsubsection{Medida}
@@ -184,7 +183,7 @@
 	
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.5\textwidth]{javaScript-inclusao-script.jpg}
+		\includegraphics[width=.7\textwidth]{javascript-inclusao-script.jpg}
 		\caption{Exemplo de inclusão de uma biblioteca JavaScript em uma página HTML}
 		\label{fig:js}
 		\end{figure}
@@ -196,7 +195,7 @@
 		
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.3\textwidth]{json-formato.jpg}
+		\includegraphics[width=.4\textwidth]{json-formato.jpg}
 		\caption{Exemplo de estrutura de dados no formato JSON}
 		\label{fig:formato-json}
 		\end{figure}
@@ -206,7 +205,7 @@
 		
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.8\textwidth]{json-comparativo-xml.jpg}
+		\includegraphics[width=1\textwidth]{json-comparativo-xml.jpg}
 		\caption{Comparativo entre os formatos JSON e XML}
 		\label{fig:js-xml-comparativo}
 		\end{figure}
@@ -223,7 +222,7 @@
 		
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.5\textwidth]{mvc.png}
+		\includegraphics[width=.5\textwidth]{1.jpg}
 		\caption{Desenho do modelo MVC e a interação entre as camadas}
 		\label{fig:0}
 		\end{figure}
@@ -253,11 +252,11 @@
 
 	\subsection{MVVM}
 
-		Um novo padrão de \emph{design} de \emph{software} é o MVVM.
-		Significa Model-View-ViewModel e é uma variação dos padrões MVC e MVP vistos anteriormente.
-		A novidade aqui é a camada ViewModel, que surge com a responsabilidade de disponibilizar para a camada View uma lógica de apresentação.
-		Além disso, coordena interações entre as camadas Model e View sem ter nenhum conhecimento sobre a View.
-		Outra vantagem é a sua testabilidade, uma vez que independe de Model e View.
+		\hl{Pendente...}
+		MVVM (Model-View-ViewModel)
+
+		\hl{Pendente...}
+		Binding
 
 \section{Status quo}
 
@@ -285,7 +284,7 @@
 
 	\subsubsection{HyperCube}\label{sec:hypercube}
 	
-		HyperCube é uma biblioteca escrita em JavaScript que proporciona a criação de cubos de dados multidimensional, permite a aplicação de filtros e agregações, gerando dados estatísticos para fins de análise.
+		HyperCube é uma biblioteca escrita em JavaScript que proporciona a criação de cubos de dados multi-dimensional, permite a aplicação de filtros e agregações, gerando dados estatíscos para fins de análise.
 		\emph{Open source} sob licença Apache 2.0, o HyperCube está publicado no GitHub, onde está descrito como um banco de dados OLAP leve escrito em JavaScript, útil para qualquer aplicação que precise extrair métricas para propósitos de gráficos dinâmicos.
 		
 		A estrutura de dados interpretada pelo HyperCube é um mapa no formato JSON, onde seus registros contém tempo, fatos e medidas como mostra a figura \ref{fig:ex-mapa-json}.
@@ -293,14 +292,14 @@
 		
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.8\textwidth]{hypercube-mapa.jpg}
+		\includegraphics[width=1\textwidth]{hypercube-mapa.jpg}
 		\caption{Exemplo de um mapa de dados no formato JSON no formato compreendido pelo HyperCube}
 		\label{fig:ex-mapa-json}
 		\end{figure}
 
 		\begin{figure}[ht]
 		\centering
-		\includegraphics[width=.6\textwidth]{hypercube-cubo.jpg}
+		\includegraphics[width=.8\textwidth]{hypercube-cubo.jpg}
 		\caption{Código JavaScript responsável pela transformação do mapa em um cubo de dados do HyperCube}
 		\label{fig:cmd-js-cubo-hypercube}
 		\end{figure}
@@ -324,41 +323,35 @@
 			\item[deserialize] Cria o cubo de dados a partir de um objeto no formato JSON
 			\end{description}
 
-	\subsection{Frameworks MVC client-side}
+	\subsection{Frameworks client-side}
 
-		Aplicações \emph{client-side} trazem a experiência de aplicações \emph{desktop} para aplicações \emph{web}.
-		Atualmente existem diversos \emph{frameworks} MVC \emph{client-side}.
-		A maioria deles visam melhorar a estrutura de aplicações \emph{web}, envolvendo recursos de MVC, rotas e mecanismos de \emph{templating}.
-		Cada um tem suas próprias particularidades, diferenciando principalmente em relação a camada de apresentação (View).
-		Em seguida, serão apresentados alguns dos populares \emph{frameworks} MVC \emph{client-side}.
+	\hl{Pendente...}
 
 	\subsubsection{Ember.js}
 
-		Um dos \emph{frameworks} MVC \emph{client-side} populares para se criar aplicações de página única (SPA) é o Ember.js, já utilizado por empresas como Yahoo! e Groupon.
-		O Ember.js segue o conceito de CoC (Convention over Configuration), onde o desenvolvedor configura a aplicação por meio de convenções, podendo focar no que realmente importa.
+	\hl{Pendente...}
 
-		Para a criação dos \emph{templates}, o Ember.js usa por padrão a biblioteca JavaScript Handlebars, mas permite o uso de outras formas de \emph{templating}.
-		O fator desempenho tem sido um dos alvos do Ember.js.
-		Mecanismos de cache e pré-compilação de \emph{templates}, ajudam a aplicação a carregar e rodar com boa performance.
+	\subsubsection{Backbone.js}	
 
-	\subsubsection{Backbone.js}
-
-		Criado em 2010, o Backbone.js é um \emph{framework} MVC \emph{client-side} muito leve, utilizado por serviços como Pinterest, AirBNB e Flixster.
-		Possui código simples e é fortemente documentado.
-
-		Entre as suas principais características, destaco a sua flexibilidade e facilidade de extensão, permitindo que o desenvolvedor crie seu próprio \emph{framework}, baseado no Backbone.js.
-		Sua curva de aprendizado para usar o Backbone.js pode ser menor, caso o desenvolvedor já tenha experiências com o \emph{framework} Underscore.js e jQuery.
+	\hl{Pendente...}
 
 	\subsubsection{AngularJS}
 
-		AngularJS é um \emph{framework} MVC \emph{client-side} criado em 2009 de bastante destaque sendo atualmente patrocinado pela empresa Google.
-		Vem trazendo conceitos inovadores para os desenvolvedores de aplicações \emph{web}, por exemplo o conceito \emph{Two-way data binding} que mantém informações sincronizadas entre as camadas Model e View.
-		Uma vez que um dado é alterado na página, o mesmo é refletido no modelo.
-		Da mesma forma, uma vez que o dado é modificado no modelo, se reflate automaticamente na página.
-		Em seu site oficial, é mencionado como \emph{"Superheroic JavaScript MVW Framework"}, devido ao seu poder e abrangência dos paradigmas MVC e MVVM.
+		AngularJS é um \emph{framework} MVC \emph{client-site} de bastante destaque criado pela da empresa Google.
+		Em seu site, está descrito como 
+		AngularJS é construído sobre a ideologia de que a programação declarativa deve ser usada para construção de interfaces e componentes, enquanto que a programação imperativa é excelente para escrever as regras de negócio \cite{col-front-end}.
+		
+		\hl{Pendente...} link com MVVM / MVW / MV*
 
-		O AngularJS é construído sobre a ideologia de que a programação declarativa deve ser usada para construção de interfaces e componentes, enquanto que a programação imperativa é excelente para escrever as regras de negócio \cite{col-front-end}.
-		Uma das suas características é sua arquitetura de \emph{building blocks}, que mantém categorias distintas de código como diretivas e filtros, além dos tradicionais \emph{controllers} e \emph{views}.
+		\hl{Pendente...} Controladores
+
+		\hl{Pendente...} Modelos
+
+		\hl{Pendente...} Escopo
+
+		\hl{Pendente...} Diretivas
+
+		\hl{Pendente...} Filtros
 
 \section{Tomada de decisão}
 
@@ -366,7 +359,7 @@
 
 	\subsection{Front-end da aplicação}
 
-		Considerando que a solução proposta é uma aplicação \emph{web} codificada em HTML, com mecanismo JavaScript envolvendo modelo de dados no formato JSON, após uma avaliação de ferramentas de mercado, optou-se pela utilização do \emph{framework} AngularJS.
+		Considerando que a solução proposta é uma aplicação \emph{web} codificada em HTML, com mecanismo Javascript envolvendo modelo de dados no formato JSON, após uma avaliação de ferramentas de mercado, optou-se pela utilização do \emph{framework} AngularJS.
 
 		Entre os fatores determinantes para essa decisão estão o mecanismo próprio (\emph{engine templating}), o tamanho e dependências do AngularJS e o paradigma SPA.
 		Além disso, o fato do \emph{framework} ter sido desenvolvido pela Google e experiências positivas do autor utilizando o mesmo contribuíram para a escolha, fazendo com que o \emph{framework} Durandal fosse descartado na comparação por ser bastante semelhante e do mesmo nível do AngularJS em relação a MVVM (\emph{data binding}) e SPA.
@@ -377,8 +370,8 @@
 	\subsection{Análise sobre o cubo de dados}
 
 		Uma vez que a proposta deste artigo é focada na análise diretamente no lado cliente, a opção foi modelar os dados no formato JSON, não importando a origem da leitura dos mesmos.
-		O importante é poder trabalhar com os dados no JavaScript, ignorando outros fatores como requisições HTTP, consumo de serviços REST e Data Warehouse.
-		Para a montagem do cubo de dados em JavaScript, sem dependência de outras APIs ou servidores de aplicação, a solução encontrada foi utilizar a API do Hypercube.
+		O importante é poder trabalhar com os dados no Javascript, ignorando outros fatores como requisições HTTP, consumo de serviços REST e Data Warehouse.
+		Para a montagem do cubo de dados em Javascript, sem dependência de outras APIs ou servidores de aplicação, a solução encontrada foi utilizar a API do Hypercube.
 		Outras opções seriam mais indicadas para um BI mais robusto ou para trabalhar os dados no lado servidor.
 
 \section{Descrição da solução}\label{descricao-da-solucao}
@@ -389,7 +382,7 @@
 	\subsection{Statz}\label{statz}
 
 		O Statz é uma aplicação \emph{web} no conceito de página única (\emph{single-page}) que serve para auxiliar a análise de dados estatísticos, manipulando dados em tempo real diretamente no \emph{front-end}.
-		Tem como característica possibilitar esta análise sobre cubos de dados multidimensionais (OLAP), portanto através de filtros e segmentações o Statz apresenta os dados para análise através de \emph{dashboards}.
+		Tem como característica possibilitar esta análise sobre cubos de dados multi-dimensionais (OLAP), portanto através de filtros e segmentações o Statz apresenta os dados para análise através de \emph{dashboards}.
 
 		\subsubsection{Apresentação}\label{statz-apresentacao}
 
@@ -407,12 +400,12 @@
 
 		\subsubsection{Universo de dados}\label{statz-universo-de-dados}
 
-			Para servir de exemplo da análise de dados usando sistema Statz, foi escolhida uma base de dados de histórico de copas do mundo de futebol até 2010, fornecida pelo site da FIFA (Fédération Internationale de Football Association) como mostra a figura \ref{fig:site-fifa}.
+			Para servir de exemplo da análise de dados usando sistema Statz, foi escolhida uma base de dados de histórico de copas do mundo de futebol, fornecida pelo site da FIFA (Fédération Internationale de Football Association) como mostra a figura \ref{fig:site-fifa}.
 			O Statz trabalha com os dados no lado cliente, para isso precisa carregá-los como um objeto JavaScript do tipo \emph{array}, no formato JSON.
 
 			\begin{figure}[ht]
 			\centering
-			\includegraphics[width=1\textwidth]{fifa-2010.png}
+			\includegraphics[width=.5\textwidth]{1.jpg}
 			\caption{Estatísticas de copas do mundo disponibilizados no site da FIFA}
 			\label{fig:site-fifa}
 			\end{figure}
@@ -421,13 +414,13 @@
 
 			A arquitetura do Statz é moderna, sendo desenvolvida no modelo MVC \emph{client-side}, mais precisamente o modelo MVVM com o uso do \emph{framework} AngularJS no \emph{front-end} da aplicação.
 			Como o foco da solução é a manipulação dos dados diretamente no \emph{front-end}, optou-se por trabalhar com dados de exemplo fixos (\emph{hard-coded}), não desviando a atenção do escopo do presente artigo.
-			Dessa forma, a aplicação não precisa buscar os dados, eles já estão presentes em um objeto JavaScript no formato JSON e darão origem ao cubo de dados gerado através da API do HyperCube.
-			Para que isso ocorra, é necessário que o objeto JavaScript esteja em uma estrutura de dados predefinida contendo o momento do dado, fatos e medidas conforme é demonstrado na figura \ref{fig:fifa-dados-json}.
-			Só assim, o HyperCube consegue interpretar e deserializar o objeto, montando o cubo de dados e disponibilizando o mesmo para ser filtrado e calculado também em JavaScript.
+			Dessa forma, a aplicação não precisa buscar os dados, eles já estão presentes em um objeto Javascript no formato JSON e darão origem ao cubo de dados gerado através da API do HyperCube.
+			Para que isso ocorra, é necessário que o objeto Javascript esteja em uma estrutura de dados predefinida contendo o momento do dado, fatos e medidas conforme é demonstrado na figura \ref{fig:fifa-dados-json}.
+			Só assim, o HyperCube consegue interpretar e deserializar o objeto, montando o cubo de dados e disponibilizando o mesmo para ser filtrado e calculado também em Javascript.
 
 			\begin{figure}[ht]
 			\centering
-			\includegraphics[width=1\textwidth]{json-participacoes-copas.png}
+			\includegraphics[width=.5\textwidth]{1.jpg}
 			\caption{Dados de copas do mundo obtidas junto a FIFA, no formato JSON}
 			\label{fig:fifa-dados-json}
 			\end{figure}			
@@ -443,8 +436,8 @@
 = FALA DA ORIGEM DOS DADOS EM BANCO, QUE PODERIAM SER DADOS DINÂMICOS OU GERADOS POR ETL =
 ==========================================================================================
 
-Vale salientar que ss dados poderiam ser obtidos através de um DBMS (DataBase Management System), em português SGBD (Sistema de Gerenciamento de Banco de Dados), no tradicional banco de dados relacional ou em banco de dados NoSQL (Not only SQL) que é um banco de dados não-relacional, mais flexível e de alta performance.
-Em uma abordagem mais profissional, é interessante trabalhar com os dados de um DW (Data Warehouse), onde o modelo de dados é desnormalizado, normalmente os dados já foram transformados, agrupados e agregados por uma ferramenta de ETL (Extract, Transform, Load) deixando-os prontos para serem apresentados. 
+Vale salientar que ss dados poderiam ser obtidos através de um DBMS (DataBase Management System), em português SGBD (Sistema de Gerenciamento de Banco de Dados), no tradicional banco de dados relacional ou em banco de dados NoSQL (Not Only SQL) que é um banco de dados não-relacional, mais flexível e de alta performance.
+Em uma abordagem mais profissional, é interessante trabalhar com os dados de um DW (Data Warehouse), onde o modelo de dados é desnormalizado, normalmente os dados já foram transformados, agrupados e agregados por uma ferramenta de ETL (Extract, Transform, Load) deixando-os prontos para serem apresentados.
 
 o lado servidor só é necessário se a origem dos dados for dinâmica por exemplo tabelas de banco de dados que sofrem atualizações constantes.
 \end{comment}
@@ -457,10 +450,10 @@ o lado servidor só é necessário se a origem dos dados for dinâmica por exemplo t
 
 Diferente de aplicações cliente-servidor que trabalham basicamente com troca de mensagens via requisições HTTP e outras tecnologias, como o Node.JS, processam o JavaScript no lado servidor.
 Basicamente, o Statz realiza apenas requisições para a inclusão das bibliotecas JavaScript utilizadas na página.
-Para importar os dados e trabalhar as análises, busca um objeto JavaScript no formato JSON para a geração do cubo de dados multidimensional.
+Para importar os dados e trabalhar as análises, busca um objeto JavaScript no formato JSON para a geração do cubo de dados multi-dimensional.
 Os dados precisam ser carregados no JavaScript da página (\emph{client-side}), portanto devem ser extraídos de uma requisição adicional para um arquivo, caso os dados sejam estáticos, ou extraídos de uma requisição a um serviço REST que retornará os dados no 	formato JSON esperado.
 
-Com os dados no lado cliente, o Statz já pode montar o cubo de dados multidimensional e manipular os dados. 
+Com os dados no lado cliente, o Statz já pode montar o cubo de dados multi-dimensional e manipular os dados. 
 Para isso, utiliza a da API (Application Programming Interface) JavaScript do HyperCube, que disponibiliza algumas funções permitindo que se extraia informações do cubo de dados, relacionada tanto a fatos quanto medidas.
 É dessa forma que o Statz acessa os dados e consegue criar os possíveis filtros e análises iniciais para apresentar ao usuário de forma visual através de gráficos e \emph{dashboards}, interagindo com o usuário através da seleção de dados dos filtros na página.
 \end{comment}
@@ -499,7 +492,7 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 
 			A API do Hypercube possibilita filtrar o cubo de dados com a função \textbf{slice} passando um mapa de filtros com os valores de cada "fato" como "ano", "pais" e "continente".
 			Inicialmente, como não há filtros selecionados, nenhuma função é aplicada, fazendo com que seja considerado todo o universo de dados contido no cubo de dados.
-			Se quisermos filtrar por mais de um ano, País ou continente, o resultado será um cubo de dados vazio.
+			Se quisermos filtrar por mais de um ano, pais ou continente, o resultado será um cubo de dados vazio.
 			A explicação é simples: uma vez que os dados de histórico no detalhe sempre estão relacionados a algum ano específico, apenas de um país, que por sua vez pertence a um determinado continente.
 			
 			Portanto para agrupar os dados o Statz usa a função \textbf{dice}, passando também um mapa de filtros com valores de "fato".
@@ -508,14 +501,14 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 
 			\begin{figure}[ht]
 			\centering
-			\includegraphics[width=.8\textwidth]{statz-historico.png}
+			\includegraphics[width=1\textwidth]{statz-historico.png}
 			\caption{Tela de histórico do Statz apresentando dashboards com os filtros aplicados}
 			\label{fig:statz-historico}
 			\end{figure}
 				
 		\subsubsection{Análise de ranking}
 
-			A tela de ranking é mais simples que a anterior. Como se pode ver na figura \ref{fig:statz-ranking}, a mesma não possui filtros e apenas mostra uma relação de Países ordenadas por pontuação, ou seja, em primeiro lugar o País de melhor participação em todas as copas do mundo considerando a pontuação de vitórias e empates, e assim por diante até os Países de pior participação.
+			A tela de ranking é mais simples que a anterior. Como se pode ver na figura \ref{fig:statz-ranking}, a mesma não possui filtros e apenas mostra uma relação de Países ordenadas por pontuação, ou seja, em primeiro lugar o País de melhor particição em todas as copas do mundo considerando a pontuação de vitórias e empates, e assim por diante até os Países de pior participação.
 
 			O cubo de dados contém no detalhe o histórico de todos os Países em todas as participações.
 			O que o Statz faz para criar o ranking é sumarizar os dados que dão origem a pontuação, dado calculado em tempo de execução considerando as medidas "vitorias" e "empates". 
@@ -526,7 +519,7 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 
 			\begin{figure}[ht]
 			\centering
-			\includegraphics[width=.8\textwidth]{statz-ranking.png}
+			\includegraphics[width=1\textwidth]{1.jpg}
 			\caption{Tela de ranking do Statz}
 			\label{fig:statz-ranking}
 			\end{figure}
@@ -545,7 +538,7 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 
 			\begin{figure}[ht]
 			\centering
-			\includegraphics[width=.8\textwidth]{statz-pais.png}
+			\includegraphics[width=1\textwidth]{1.jpg}
 			\caption{Tela para análise especifica de um País}
 			\label{fig:statz-pais}
 			\end{figure}
@@ -556,11 +549,11 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 	Por exemplo, o \emph{front-end} poderia melhorar a identidade visual e incorporar gráficos de vários tipos para melhor análise dos indicadores e com possibilidade de \emph{drill down}, poderia implementar um controle de acesso com login e senha para proteger o acesso aos dados, além de possibilitar exportar os dados da análise para o formato de planilha ou imagem.
 
 	Na questão dos dados que atualmente são fixos, seria interessante avaliar o uso de um DW e pensar em automatizar a carga dos mesmos com alguma ferramenta de ETL, adaptando o sistema para um ambiente mais profissional (corporativo) onde a atualização dos dados se faz necessária com periodicidade às vezes até diária.
-	Nesse caso, o arquivo JavaScript seria atualizado diariamente.
+	Nesse caso, o arquivo Javascript seria atualizado diariamente.
 	Lembrando que não as análise são sobre dado histórico (BI/Big Data), não devem ser em tempo real.
 
 	Já pensando em carregar os dados em tempo de execução, penso que o melhor caminho seria evoluir para que o sistema consuma um serviço REST através de uma requisição AJAX.
-	Esse serviço seria responsável pela consulta em algum banco de dados e pela carga dos mesmos no formato esperado pelo JavaScript e na estrutura esperada pelo HyperCube.
+	Esse serviço seria responsável pela consulta em algum banco de dados e pela carga dos mesmos no formato esperado pelo Javascript e na estrutura esperada pelo HyperCube.
 	
 	Sobre o formato dos dados, como a aplicação trabalha no formato JSON e o Hypercube precisa de uma estrutura de dados específica, uma excelente abordagem é utilizar um banco de dados NoSQL, que são bancos de dados orientados a documentos, diferente do modelo tradicional que são bancos de dados relacional.
 	
@@ -568,10 +561,14 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 	Seria possível armazenar nestes bancos de dados documentos já na estrutura de dados esperada pela aplicação para a geração do cubo de dados.
 	Optando pelo uso do CouchDB, abre-se uma oportunidade diferente. Como este possui uma API totalmente baseada no protocolo HTTP, seria possível que o consumo fosse feito diretamente nele, sem a necessidade de outro serviço REST.
 
-	Outra abordagem interessante seria manter o dado em tempo real via WebSocket, onde a aplicação se inscreveria em uma fila e receberia eventos que poderiam ser utilizados para atualizar os dashboards das páginas de análise.
+	Outra abordagem interessante seria manter o dado em tempo real via WebSocket, onde a aplicação se increveria em uma fila e receberia eventos que poderiam ser utilizados para atualizar os dashboards das páginas de análise.
 	Como sugestão, a ferramenta RabbitMQ poderia ser utilizada, pois é uma relativamente fácil de usar, além de possuir plugins que facilitam a integração com sistemas.
 
 \section{Considerações Finais}
+
+	\hl{Pendente...} 
+
+\begin{comment}
 
 	O objetivo deste trabalho era propor um sistema de informação especialista em estatística com algumas características específicas. Entre elas está a centralização do mecanismo de manipulação de dados e a análise dos mesmos diretamente na interface, trazendo consigo uma abordagem diferente no que diz respeito a filtros e segmentações em cubo de dados OLAP, e o uso de ferramentas e tecnologias modernas em sua arquitetura beneficiando e enriquecendo o seu desenvolvimento.
 	
@@ -579,9 +576,12 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 	
 	Tendo em vista o objetivo alcançado, a ideia é aproveitar o Statz em situações mais profissionais, onde a análise dos dados seja útil na tomada de decisões servindo como ferramenta essencial para competitividade no mercado.
 	
-	Em relação aos próximos passos do Statz, pretende-se evoluir ainda mais o sistema no front-end, considerando a atualização do cubo de dados em tempo real através do recurso WebSocket presente no HTML 5 e suportado por navegadores modernos. Outro ponto importante a evoluir é o uso de banco de dados na carga do cubo de dados para a interface. Não foi implementado neste momento, mas é interessante que seja possível, de preferência um banco de dados NoSQL com documentos no formato JSON.
+	Em relação aos próximos passos do Statz, pretende-se evoluir ainda mais o sistema no front-end, considerando a atualização do cubo de dados em tempo real através do recurso WebSocket presente no HTML 5 e suportado por navegadores modernos. Outro ponto importante a evoluir é o uso de banco de dados na carga do cubo de dados para a interface. Não foi implementado neste momento, mas é interessante que seja possível, de preferência um banco de dados não-relacional.
 	
-	Recomendo a utilização do Statz no meio corporativo. Colocando-o em ambiente de produção será importante para sua evolução, seja aprimorando a arquitetura ou na adaptação a novos modelos de negócio.
+	Mobile
+	
+	Recomendo a utilização do Statz no meio corporativo. Colocando-o em ambiente de produção será importante para sua evoluição, seja aprimorando a arquitetura ou na adaptação a novos modelos de negócio.
+\end{comment}
 
 \bibliographystyle{sbc}
 \bibliography{artigo-rafael-oliveira}
