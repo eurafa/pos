@@ -202,7 +202,7 @@
 		\end{figure}
 	
 		O JSON é um formato de serialização de dados com base em literais de JavaScript \cite{js-guide}.
-		Este formato de dados tem sido bastante utilizado no desenvolvimento de aplicações \emph{web} e serviços REST (REpresentational State Transfer), em substituição ao formato XML (eXtensible Markup Language) que é mais verboso como se pode perceber no comparativo representado na figura \ref{fig:js-xml-comparativo}.
+		Este formato de dados tem sido bastante utilizado no desenvolvimento de \hl{APIs (\emph{Application Programming Interface}) também aparecendo em serviços REST} (REpresentational State Transfer), em substituição ao formato XML (eXtensible Markup Language) que é mais verboso como se pode perceber no comparativo representado na figura \ref{fig:js-xml-comparativo}.
 		
 		\begin{figure}[ht]
 		\centering
@@ -557,19 +557,22 @@ Para isso, utiliza a da API (Application Programming Interface) JavaScript do Hy
 
 	Na questão dos dados que atualmente são fixos, seria interessante avaliar o uso de um DW e pensar em automatizar a carga dos mesmos com alguma ferramenta de ETL, adaptando o sistema para um ambiente mais profissional (corporativo) onde a atualização dos dados se faz necessária com periodicidade às vezes até diária.
 	Nesse caso, o arquivo JavaScript seria atualizado diariamente.
-	Lembrando que não as análise são sobre dado histórico (BI/Big Data), não devem ser em tempo real.
+	\hl{Lembrando que a análise é sobre dado histórico (BI/Big Data), portando não necessita atualização em tempo real.}
 
-	Já pensando em carregar os dados em tempo de execução, penso que o melhor caminho seria evoluir para que o sistema consuma um serviço REST através de uma requisição AJAX.
-	Esse serviço seria responsável pela consulta em algum banco de dados e pela carga dos mesmos no formato esperado pelo JavaScript e na estrutura esperada pelo HyperCube.
+	Já pensando em carregar os dados em tempo de execução, \hl{o sistema poderia consumir uma API para trazer os dados no formato esperado pelo JavaScript e na estrutura esperada pelo HyperCube. Como a aplicação trabalha no formato JSON e o Hypercube precisa de uma estrutura de dados específica, uma excelente abordagem é utilizar bancos de dados orientados a documentos (NoSQL).}
 	
-	Sobre o formato dos dados, como a aplicação trabalha no formato JSON e o Hypercube precisa de uma estrutura de dados específica, uma excelente abordagem é utilizar um banco de dados NoSQL, que são bancos de dados orientados a documentos, diferente do modelo tradicional que são bancos de dados relacional.
-	
+	\hl{parágrafo de bancos NoSQL removido}
+	\begin{comment}
 	Existem bancos de dados NoSQL que já trabalham no formato JSON como o MongoDB e CouchDB.
 	Seria possível armazenar nestes bancos de dados documentos já na estrutura de dados esperada pela aplicação para a geração do cubo de dados.
 	Optando pelo uso do CouchDB, abre-se uma oportunidade diferente. Como este possui uma API totalmente baseada no protocolo HTTP, seria possível que o consumo fosse feito diretamente nele, sem a necessidade de outro serviço REST.
+	\end{comment}
 
+	\hl{parágrafo de Websocket removido, parte dele incluída acima junto a carga em tempo de execução}
+	\begin{comment}
 	Outra abordagem interessante seria manter o dado em tempo real via WebSocket, onde a aplicação se inscreveria em uma fila e receberia eventos que poderiam ser utilizados para atualizar os dashboards das páginas de análise.
 	Como sugestão, a ferramenta RabbitMQ poderia ser utilizada, pois é uma relativamente fácil de usar, além de possuir plugins que facilitam a integração com sistemas.
+	\end{comment}
 
 \section{Considerações Finais}
 
